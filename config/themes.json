@@ -1,3 +1,12 @@
 {
-    
+  "main": "#303030",
+  "border": "#1F1F1F",
+  "white": "#FFFFFF",
+  "green": "#89BA33",
+  "gray": "#949494",
+  "red": "#A14050",
+  "blue": "#3376BA",
+  "greenFaded": "#39463E",
+  "redFaded": "#3D2525",
+  "button": "#242424"
 }

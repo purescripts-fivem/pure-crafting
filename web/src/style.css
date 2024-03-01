@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap');
+
+@font-face {
+  font-family: 'Bold';
+  font-weight: 700;
+  src: local('Segoe UI Bold');
+}
+
+@font-face {
+  font-family: 'Black';
+  src: url('./assests/seguibl.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Bold';
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,15 @@
+.container {
+  width: 3.1vw;
+  height: 100%;
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.35));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 1.3vw;
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.7));
+}

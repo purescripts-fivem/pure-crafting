@@ -12,3 +12,5 @@ Config = {
 
     debug = true, -- This just enables debug prints, if having issues with your script, enable this and then check the console and react out to me in the discord
 }
+
+-- TODO: make a limit on the amount you can place

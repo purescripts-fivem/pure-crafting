@@ -4,6 +4,9 @@ import { useAppDistpatch } from './store/store';
 import { fetchNui } from './utils/fetchNui';
 import { setConfig, setLanguage, setTheme } from './store/stores/config/config';
 import { debugData } from './utils/debugData';
+import style from './index.module.css';
+import Crafting from './components/Crafting';
+import Info from './components/Info';
 
 debugData([
   {
@@ -43,7 +46,12 @@ const App = () => {
       'getLanguage',
       {},
       {
-        select: 'lnaguage here lloyd',
+        craft: 'Craft',
+        language: 'Items Required:',
+        craftTime: 'Crafting Time:',
+        s: 's',
+        uses: 'Uses:',
+        claim: 'Claim',
       }
     )
       .then((language) => {
@@ -58,8 +66,21 @@ const App = () => {
 
   return (
     <>
-      <div>React Boilerplate baby</div>
-      <div>purescripts On Top</div>
+      <div
+        style={{
+          backgroundImage: `url(./image.webp)`,
+          zIndex: -1,
+        }}
+        className={style.container}></div>
+      <div
+        className={style.container}
+        style={{
+          marginTop: '1.75vh',
+          marginLeft: '-  0.1vw',
+        }}>
+        <Crafting />
+        <Info />
+      </div>
     </>
   );
 };

@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 82vh;
+  width: 44.5vw;
+  gap: 1.5vh;
+}
+
+.top {
+  width: 100%;
+  height: 5.5vh;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vw;
+}
+
+.housing {
+  width: 100%;
+  height: 75vh;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.75vw 0.3vw;
+}
+
+.categories {
+  width: 10.3vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vw;
+  overflow-x: auto;
+}
+
+.search {
+  width: 30vw;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8vw;
+  padding: 0 0.8vw;
+}
+
+.input {
+  width: 25vw;
+  height: 80%;
+  border: none;
+  outline: none;
+  font-size: 1.1vw;
+  background: transparent;
+}
+
+.input::placeholder {
+  color: #fff;
+}

@@ -1,0 +1,1 @@
+-- when script is loaded sort the list dont do it every time

@@ -16,7 +16,9 @@ client_scripts {
 
 server_scripts {
   "@oxmysql/lib/MySQL.lua", -- for oxmysql
-  'server/**/*',
+  'server/queue.lua',
+  'server/framework/**/*',
+  'server/modules/**/*'
 }
 
 shared_scripts {

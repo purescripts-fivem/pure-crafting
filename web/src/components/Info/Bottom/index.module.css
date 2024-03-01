@@ -1,0 +1,51 @@
+.buttonHousing {
+  width: 7.7vw;
+  height: 4.2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  height: 4.2vh;
+  width: 4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3), -3px 0px 7px rgba(0, 0, 0, 0.3),
+    0px 4px 7px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.buttonText {
+  margin-top: -0.35vh;
+}
+
+.craftButton {
+  height: 4.2vh;
+  width: 9.7vw;
+  padding: 0 0.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.18vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3), -3px 0px 7px rgba(0, 0, 0, 0.3),
+    0px 4px 7px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.input {
+  outline: 0;
+  border: 0;
+  width: 3vw;
+  height: 4.2vh;
+  text-align: center;
+  font-size: 1.18vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.4), -3px 0px 7px rgba(0, 0, 0, 0.4),
+    0px 4px 7px rgba(0, 0, 0, 0.4);
+}
+
+.input::placeholder {
+  color: #fff;
+}

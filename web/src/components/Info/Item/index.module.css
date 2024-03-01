@@ -1,0 +1,41 @@
+.container {
+  width: 8.5vw;
+  height: 17.7vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  flex-shrink: 0;
+}
+
+.housing {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3vw;
+  position: relative;
+}
+
+.imgText {
+  font-size: 1.18vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3), -3px 0px 7px rgba(0, 0, 0, 0.3),
+    0px 4px 7px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 11vh;
+  right: 0.5vh;
+}
+
+.text {
+  width: 100%;
+  height: 2vh;
+  text-align: center;
+  font-size: 1.12vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.4), -3px 0px 7px rgba(0, 0, 0, 0.4),
+    0px 4px 7px rgba(0, 0, 0, 0.4);
+}
+
+.img {
+  position: absolute;
+  width: 5.5vw;
+}
