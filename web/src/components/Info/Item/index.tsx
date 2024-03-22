@@ -11,7 +11,6 @@ const Item = (props: Props) => {
   const theme = useAppSelector((state) => state.config.theme);
   const number = useAppSelector((state) => state.craft.amount);
   const hasEnough = props.myAmount - props.amount * number >= 0;
-  console.log('has enough: ', hasEnough);
   return (
     <div className={style.container}>
       <div

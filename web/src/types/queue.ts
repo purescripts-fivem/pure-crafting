@@ -1,7 +1,6 @@
 export interface queue {
   items: item[];
   finished: item[];
-  currentItem: number;
 }
 
 export interface item {
@@ -9,4 +8,6 @@ export interface item {
   itemName: string;
   secondsLeft: number;
   timeStarted: number;
+  timeToCraft: number;
+  id: number;
 }

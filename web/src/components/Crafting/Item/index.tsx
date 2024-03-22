@@ -9,6 +9,7 @@ interface Props {
   image: string;
   isFave: boolean;
   id: number;
+  selected: boolean;
 }
 
 const Item = (props: Props) => {
@@ -19,7 +20,7 @@ const Item = (props: Props) => {
       className={style.container}
       style={{
         background: theme.main,
-        border: `0.2vw solid ${theme.border}`,
+        border: `0.2vw solid ${props.selected ? theme.white : theme.border}`,
       }}
       onClick={() => {
         dispatch(setSelected(props.id));

@@ -9,14 +9,16 @@ import Bottom from './Bottom';
 const Info = () => {
   const theme = useAppSelector((state) => state.config.theme);
   const language = useAppSelector((state) => state.config.language);
-  const items = useAppSelector((state) => state.crafting);
-  const item = items.items[items.selectedItem];
+  // const items = useAppSelector((state) => state.crafting);
+  const item = useAppSelector((state) => state.crafting.currentItem);
   const queue = useAppSelector((state) => state.queue);
+
   return (
     <div
       className={style.container}
       style={{
         background: theme.main,
+        border: `0.25vw solid ${theme.border}`,
       }}>
       <div className={style.header}>
         <div
@@ -34,7 +36,7 @@ const Info = () => {
         <div
           className={style.imgHousing}
           style={{
-            background: theme.main,
+            background: theme.button,
             border: `0.2vw solid ${theme.border}`,
           }}></div>
         <div
@@ -42,8 +44,12 @@ const Info = () => {
           style={{
             color: theme.white,
           }}>
-          <h1 className={style.heading}>{item.name}</h1>
-          <h2 className={style.description}>{item.description}</h2>
+          <h1 className={style.heading}>
+            {item ? item.name : language.noItemSelected}
+          </h1>
+          <h2 className={style.description}>
+            {item ? item.name : language.noItemSelected}
+          </h2>
           <div className={style.flex}>
             <FontAwesomeIcon
               icon={faClock}
@@ -62,7 +68,8 @@ const Info = () => {
                 style={{
                   color: theme.green,
                 }}>
-                10{language.s}
+                {item ? item.craftingTime : 0}
+                {language.s}
               </span>
             </p>
           </div>
@@ -84,7 +91,7 @@ const Info = () => {
                 style={{
                   color: theme.blue,
                 }}>
-                4
+                {item ? item.uses : 0}
               </span>
             </p>
           </div>
@@ -98,27 +105,40 @@ const Info = () => {
       <div
         className={style.queue}
         style={{
-          background: theme.main,
+          background: theme.button,
           border: `0.2vw solid ${theme.border}`,
         }}>
-        {queue.items.map((queueItem, index) => {
-          const startTimer = index === queue.currentItem;
-          return (
-            <Queue
-              key={index}
-              image={queueItem.image}
-              secondsLeft={queueItem.secondsLeft}
-              timeStarted={queueItem.timeStarted}
-              startTimer={startTimer}
-            />
-          );
-        })}
-        {/* <Queue />
-        <Queue />
-        <Queue />
-        <Queue />
-        <Queue />
-        <Queue /> */}
+        {queue.finished.length > 0 &&
+          queue.finished.map((queueItem, index) => {
+            return (
+              <Queue
+                key={index}
+                image={queueItem.image}
+                secondsLeft={queueItem.secondsLeft}
+                timeStarted={queueItem.timeStarted}
+                startTimer={false}
+                finished={true}
+                id={queueItem.id}
+                index={index}
+              />
+            );
+          })}
+        {queue.items.length > 0 &&
+          queue.items.map((queueItem, index) => {
+            const startTimer = index === 0;
+            return (
+              <Queue
+                key={index}
+                image={queueItem.image}
+                secondsLeft={queueItem.secondsLeft}
+                timeStarted={queueItem.timeStarted}
+                startTimer={startTimer}
+                finished={false}
+                id={queueItem.id}
+                index={index}
+              />
+            );
+          })}
       </div>
       <div className={style.bottom}>
         <Bottom />

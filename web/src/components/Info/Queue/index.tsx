@@ -1,39 +1,46 @@
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '../../../store/store';
+import { useState } from 'react';
+import { useAppDistpatch, useAppSelector } from '../../../store/store';
 import style from './index.module.css';
+import { sendNui } from '../../../utils/sendNui';
+import { hidePopup, setPopup } from '../../../store/stores/popup/popup';
 
 interface Props {
   image: string;
   secondsLeft: number;
   timeStarted: number;
   startTimer: boolean;
+  finished: boolean;
+  id: number;
+  index: number;
 }
 
 const Queue = (props: Props) => {
   const theme = useAppSelector((state) => state.config.theme);
   const language = useAppSelector((state) => state.config.language);
-  const [timeLeft, setTimeLeft] = useState(props.secondsLeft);
   const [hovering, setHovering] = useState(false);
-  const usedTime = props.timeStarted + props.secondsLeft;
-  const currentTime = Math.floor(Date.now() / 1000);
-  const displayTime = usedTime - currentTime;
-  const canUse = displayTime <= 0 ? true : false;
+  const dispatch = useAppDistpatch();
 
-  useEffect(() => {
-    if (canUse) return;
-    if (!props.startTimer) return;
-    const interval = setInterval(() => {
-      setTimeLeft(displayTime);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [displayTime]);
-
-  if (canUse) {
+  if (props.finished) {
     return (
       <div
         className={style.container}
         onClick={() => {
-          console.log('onClick - claim');
+          dispatch(
+            setPopup({
+              showPopup: true,
+              popupText: language.claimCraftPopup,
+              onSubmit: () => {
+                sendNui('claimCraft', {
+                  id: props.id,
+                  index: props.index,
+                });
+                dispatch(hidePopup());
+              },
+              onCancel: () => {
+                dispatch(hidePopup());
+              },
+            })
+          );
         }}
         style={{
           background: theme.greenFaded,
@@ -55,8 +62,22 @@ const Queue = (props: Props) => {
     <div
       className={style.container}
       onClick={() => {
-        console.log('onClick - cancel queue or claim');
-        // TODO: make a confirm cancel
+        dispatch(
+          setPopup({
+            showPopup: true,
+            popupText: language.cancelCraftPopup,
+            onSubmit: () => {
+              sendNui('cancelCraft', {
+                id: props.id,
+                index: props.index,
+              });
+              dispatch(hidePopup());
+            },
+            onCancel: () => {
+              dispatch(hidePopup());
+            },
+          })
+        );
       }}
       onMouseOver={() => {
         setHovering(true);
@@ -74,7 +95,7 @@ const Queue = (props: Props) => {
         style={{
           color: theme.white,
         }}>
-        {hovering ? language.s : timeLeft + language.s}
+        {hovering ? language.cancel : props.secondsLeft + language.s}
       </h1>
     </div>
   );

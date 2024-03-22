@@ -30,10 +30,10 @@ export const VisibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!visible) return;
 
     const keyHandler = (e: KeyboardEvent) => {
-      // if (['Escape'].includes(e.code)) {
-      //   if (!isEnvBrowser()) fetchNui('hideFrame');
-      //   else setVisible(!visible);
-      // }
+      if (['Escape'].includes(e.code)) {
+        if (!isEnvBrowser()) fetchNui('hideFrame');
+        else setVisible(!visible);
+      }
     };
 
     window.addEventListener('keydown', keyHandler);

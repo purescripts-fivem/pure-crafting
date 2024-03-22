@@ -15,17 +15,7 @@ const Crafting = () => {
   const [search, setSearch] = useState('');
 
   const buttonClick = (category: string) => {
-    console.log('buttonClick', category);
     sortItems(category);
-  };
-
-  const isFave = (name: string) => {
-    crafting.items.map((item) => {
-      if (item.name == name) {
-        return true;
-      }
-    });
-    return false;
   };
 
   const sortItems = (category: string) => {
@@ -35,6 +25,7 @@ const Crafting = () => {
       setCraftingItems(array);
       return;
     }
+
     crafting.items.map((item: craftingItem) => {
       if (item.category === category) {
         array.push(item);
@@ -57,17 +48,18 @@ const Crafting = () => {
           }}
         />
         <div className={style.categories}>
-          {categories.map((item, index) => {
-            return (
-              <Button
-                key={index}
-                icon={item.icon}
-                onClick={() => {
-                  buttonClick(item.category);
-                }}
-              />
-            );
-          })}
+          {categories.length > 0 &&
+            categories.map((item, index) => {
+              return (
+                <Button
+                  key={index}
+                  icon={item.icon}
+                  onClick={() => {
+                    buttonClick(item.category);
+                  }}
+                />
+              );
+            })}
         </div>
         <div
           className={style.search}
@@ -96,23 +88,29 @@ const Crafting = () => {
         </div>
       </div>
       <div className={style.housing}>
-        {craftingItems
-          .filter((item: craftingItem) => {
-            return search === ''
-              ? item
-              : item.name.toLowerCase().includes(search);
-          })
-          .map((item: craftingItem, index: number) => {
-            return (
-              <Item
-                key={index}
-                name={item.name}
-                image={item.image}
-                isFave={isFave(item.name)}
-                id={item.id}
-              />
-            );
-          })}
+        {craftingItems.length > 0 &&
+          craftingItems
+            .filter((item: craftingItem) => {
+              return search === ''
+                ? item
+                : item.name.toLowerCase().includes(search);
+            })
+            .map((item: craftingItem, index: number) => {
+              return (
+                <Item
+                  key={index}
+                  name={item.name}
+                  image={item.image}
+                  isFave={item.category === 'fave'}
+                  id={item.id}
+                  selected={
+                    crafting.currentItem
+                      ? crafting.currentItem.id === item.id
+                      : false
+                  }
+                />
+              );
+            })}
       </div>
     </div>
   );

@@ -18,7 +18,10 @@ server_scripts {
   "@oxmysql/lib/MySQL.lua", -- for oxmysql
   'server/queue.lua',
   'server/framework/**/*',
-  'server/modules/**/*'
+  'server/modules/**/*',
+  'server/craft/**/*',
+  'server/benches/**/*',
+  'server/inventory/**/*',
 }
 
 shared_scripts {

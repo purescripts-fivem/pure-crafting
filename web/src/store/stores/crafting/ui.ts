@@ -22,7 +22,7 @@ export const uiSlice = createSlice({
   initialState,
   reducers: {
     setCategories: (state, action: PayloadAction<any>) => {
-      state = action.payload;
+      state.categories = action.payload;
     },
   },
 });

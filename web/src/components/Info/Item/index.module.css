@@ -31,8 +31,8 @@
   height: 2vh;
   text-align: center;
   font-size: 1.12vw;
-  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.4), -3px 0px 7px rgba(0, 0, 0, 0.4),
-    0px 4px 7px rgba(0, 0, 0, 0.4);
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
+    0px 4px 7px rgba(0, 0, 0, 0.25);
 }
 
 .img {

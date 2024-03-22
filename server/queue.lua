@@ -1,36 +1,66 @@
 Queue = {}
-Users = {}
-
--- add to queue
--- remove from queue
--- check if in queue
+ActiveBenches = {}
 
 --[[
-    it will work by first appending the queue to add the item
-    when it is the index 0 it will then begin the timer
-    after the timer has finished it will add it to the finished table
-    they can collect the finished table visa verse
-    works offline so it takes the time from when it started similar to deathbeds
+    for faves:
+    link it to the user and force the favourites to constantly be on there unless disabled in the config
+    check that the faves align with the items on the crafting bench to show these properly
 --]]
 
-function Queue:new(source)
-
+function Queue:new(benchId, queue, finished)
     local data = {
-        source = source,
-        items = {},
-        currentItem = nil
+        benchId = benchId,
+        activeMembers = {},
+        items = json.decode(queue),
+        finished = json.decode(finished),
     }
 
     debugPrint('Queue:new | ', json.encode(data))
     return setmetatable(data, {__index = Queue})
 end
 
-function initQueue(source)
-    local user = Queue:new(source)
-    Users[tostring(source)] = user
+function initQueue(benchId, queue, finished)
+    local bench = Queue:new(benchId, queue, finished)
+    ActiveBenches[tostring(benchId)] = bench
 end
 
-function Queue:add(item)
-    self.items[#self.items + 1] = item
-    debugPrint('Queue:add | ', json.encode(item), json.ecode(self.items))
+function Queue:triggerEvent(eventName, ...)
+    for i = 1, #self.activeMembers do
+        debugPrint('Queue:triggerEvent | Triggering event: ', eventName, self.activeMembers[i], ...)
+        TriggerClientEvent(eventName, self.activeMembers[i], ...)
+    end
 end
+
+function Queue:removePlayer(source)
+    for i = 1, #self.activeMembers do
+        if self.activeMembers[i] == source then
+            table.remove(self.activeMembers, i)
+            break
+        end
+    end
+    debugPrint('Queue:removePlayer | benchId: ', self.benchId, ' | sources online: ', json.encode(self.activeMembers))
+end
+
+function Queue:addPlayer(source)
+    self.activeMembers[#self.activeMembers + 1] = source
+    debugPrint('Queue:addPlayer | benchId: ', self.benchId, ' | sources online: ', json.encode(self.activeMembers))
+end
+
+CreateThread(function()
+    while true do 
+        for k,v in pairs(ActiveBenches) do
+            local user = ActiveBenches[k]
+            if not user.items[1] then 
+                goto continue
+            end
+            local item = user.items[1]
+            item.secondsLeft = item.secondsLeft - 1
+            user:triggerEvent('pure-crafting:secondChange', user.items[1].secondsLeft)
+            if item.secondsLeft <= 0 then
+                user:finishedCraft(item)
+            end
+            ::continue::
+        end
+        Wait(1000)
+    end
+end)

@@ -4,6 +4,7 @@ export interface craftingState {
 
   items: craftingItem[];
   selectedItem: number;
+  currentItem: craftingItem | null;
 }
 
 export interface item {

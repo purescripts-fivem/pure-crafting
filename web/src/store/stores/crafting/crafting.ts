@@ -29,6 +29,32 @@ const initialState: craftingState = {
         },
       ],
     },
+    {
+      itemName: 'assualtrifle',
+      name: 'Assault Rifle2',
+      image: 'https://i.imgur.com/1Yz2x3j.png',
+      category: 'fave',
+      id: 3,
+      description: 'A fuckin cool ar',
+      craftingTime: 10,
+      uses: 4,
+      requiredItems: [
+        {
+          itemName: 'wood',
+          name: 'Wood',
+          amount: 2,
+          myAmount: 4,
+          image: 'https://i.imgur.com/1Yz2x3j.png',
+        },
+        {
+          itemName: 'metal',
+          name: 'Metal',
+          amount: 2,
+          myAmount: 1,
+          image: 'https://i.imgur.com/1Yz2x3j.png',
+        },
+      ],
+    },
     // {
     //   name: 'Fries',
     //   image: 'https://i.imgur.com/1Yz2x3j.png',
@@ -76,17 +102,30 @@ const initialState: craftingState = {
     // },
   ],
   selectedItem: 0,
+  currentItem: null,
 };
 
 export const craftingSlice = createSlice({
   name: 'crafting',
   initialState,
   reducers: {
-    setItems: (state, action: PayloadAction<craftingState>) => {
-      state.items = action.payload.items;
+    setItems: (state, action: PayloadAction<any>) => {
+      state.items = action.payload;
+      if (!state.currentItem) return;
+      for (let i = 0; i < state.items.length; i++) {
+        if (state.items[i].id == state.currentItem.id) {
+          state.currentItem.requiredItems = state.items[i].requiredItems;
+        }
+      }
     },
     setSelected: (state, action: PayloadAction<number>) => {
       state.selectedItem = action.payload;
+      for (let i = 0; i < state.items.length; i++) {
+        if (state.items[i].id === state.selectedItem) {
+          state.currentItem = state.items[i];
+          return;
+        }
+      }
     },
   },
 });
