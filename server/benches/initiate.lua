@@ -19,20 +19,19 @@ function getBenches()
             finished = row.finished,
             obj = nil
         }
-        initQueue(row.id, row.queue, row.finished)
+        initQueue(row.id, row.queue, row.finished, row.blueprints, row.type)
     end
 
     Benches = newTable
 
     debugPrint('getBenches | Benches:', json.encode(Benches))
-
-    -- TriggerClientEvent('pure-crafting:refreshBenches', -1, Benches)
 end
 
-function insertBench(location, rotation)
-    local id = MySQL.insert.await('INSERT INTO `crafting_benches` (location, rotation) VALUES (?, ?)', {
-        json.encode(location), json.encode(rotation)
+function insertBench(location, rotation, source, type)
+    local id = MySQL.insert.await('INSERT INTO `crafting_benches` (location, rotation, type) VALUES (?, ?, ?)', {
+        json.encode(location), json.encode(rotation), type
     })
+
     newBench = {
         id = id,
         location = location,
@@ -42,16 +41,22 @@ function insertBench(location, rotation)
         obj = nil
     }
     Benches[#Benches + 1] = newBench
-    TriggerClientEvent('pure-crafting:insertBench', -1, newBench)
-    initQueue(id, json.encode({}), json.encode({}))
-end
 
-function deleteBench()
+    TriggerClientEvent('pure-crafting:insertBench', -1, newBench)
+    initQueue(id, json.encode({}), json.encode({}), json.encode({}))
+    
+    local user = Players[tostring(source)]
+    if not user then return end
+    user.amountPlaced = user.amountPlaced + 1
+    local affectedRows = MySQL.update.await('UPDATE crafting_users SET amountPlaced = ? WHERE uniqueId = ?', {
+        user.amountPlaced, user.uniqueId
+    })
 end
 
 RegisterCommand('benches', function(source)
     getBenches()
     sendBenches(source)
+    initUser(source)
 end)
 
 function sendBenches(source)

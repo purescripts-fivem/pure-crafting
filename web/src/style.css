@@ -11,6 +11,24 @@
   src: url('./assests/seguibl.ttf');
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+/* TODO: last ting make this interchangeable like inclothing */
+::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  min-width: 2px !important; /* Minimum width for the thumb */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -23,4 +41,31 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.ripple-animation {
+  overflow: hidden;
+  position: relative;
+}
+
+.ripple-effect {
+  position: absolute;
+  background: #f7f7f7;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: animate 0.6s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.35;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
 }

@@ -1,9 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 82vh;
-  width: 43vw;
+  height: 69vh;
+  width: 35.9vw;
   padding: 0 2.2vw;
+  box-shadow: rgb(0, 0, 0, 0.35) 0px 0px 16px;
 }
 
 .header {
@@ -20,6 +21,14 @@
   width: 8.4vw;
   margin-top: 0.4vh;
   /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.05) 0px 0px 6px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 7.4vw;
+  height: 7.4vw;
 }
 
 .textHousing {
@@ -63,6 +72,7 @@
   font-size: 1.1vw;
   text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
     0px 4px 7px rgba(0, 0, 0, 0.25);
+  margin-top: -0.4vh;
 }
 
 .middle {
@@ -102,15 +112,16 @@
   width: 2.8vw;
   height: 5vh;
   position: absolute;
-  margin-left: 35.3vw;
-  margin-top: -9.6vh;
+  margin-left: 28.3vw;
+  margin-top: -10vh;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .star {
-  font-size: 1.2vw;
+  font-size: 1.05vw;
   filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.45));
 }

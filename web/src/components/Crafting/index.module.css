@@ -1,8 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 82vh;
-  width: 44.5vw;
+  height: 69vh;
+  width: 37.5vw;
   gap: 1.5vh;
 }
 
@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: row;
   gap: 0.5vw;
+  margin-left: 0.05vw;
 }
 
 .housing {
@@ -30,26 +31,29 @@
   display: flex;
   flex-direction: row;
   gap: 0.5vw;
-  overflow-x: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 .search {
-  width: 30vw;
+  width: 25vw;
   height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 0.8vw;
   padding: 0 0.8vw;
+  box-shadow: rgb(0, 0, 0, 0.35) 0px 0px 16px;
 }
 
 .input {
-  width: 25vw;
+  width: 21vw;
   height: 80%;
   border: none;
   outline: none;
-  font-size: 1.1vw;
+  font-size: 1vw;
   background: transparent;
+  margin-top: -0.3vh;
 }
 
 .input::placeholder {

@@ -1,6 +1,6 @@
 fx_version "cerulean"
 
-description "Basic React Boilerplate for FiveM"
+description "Pure Crafting"
 author "purescripts.net"
 version '1.0.0'
 
@@ -22,6 +22,7 @@ server_scripts {
   'server/craft/**/*',
   'server/benches/**/*',
   'server/inventory/**/*',
+  'server/blueprints/**/*',
 }
 
 shared_scripts {
@@ -35,4 +36,8 @@ files {
 	'web/build/index.html',
 	'web/build/**/*',
   'config/themes.json'
+}
+
+exports {
+  'placeBench',
 }

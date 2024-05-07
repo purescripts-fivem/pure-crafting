@@ -69,7 +69,6 @@ function loopZones()
             sleep = 1
             if IsControlJustReleased(0, 38) then 
                 if currentZone.name == 'benches' then 
-                    print('benches: ', currentZone.benchId)
                     TriggerEvent('pure-crafting:openCrafting')
                 end
             end
@@ -87,6 +86,7 @@ function onZoneExit(data)
     if not bench then return end
     TriggerServerEvent('pure-crafting:exitZone', bench.id)
     toggleNuiFrame(false)
+    TriggerScreenblurFadeOut(250)
     currentZone = nil
 end
 

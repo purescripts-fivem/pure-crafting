@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useAppSelector } from '../../store/store';
 import Button from './Button';
 import style from './index.module.css';
@@ -6,16 +6,26 @@ import { craftingItem } from '../../types/crafting';
 import Item from './Item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import Blueprint from './Blueprint';
 
 const Crafting = () => {
   const theme = useAppSelector((state) => state.config.theme);
   const crafting = useAppSelector((state) => state.crafting);
+  const blueprints = crafting.blueprints;
   const categories = useAppSelector((state) => state.ui.categories);
   const [craftingItems, setCraftingItems] = useState<craftingItem[]>([]);
   const [search, setSearch] = useState('');
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const buttonClick = (category: string) => {
     sortItems(category);
+  };
+
+  const handleWheel = (evt: any) => {
+    const delta = evt.deltaY;
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft += delta;
+    }
   };
 
   const sortItems = (category: string) => {
@@ -34,6 +44,10 @@ const Crafting = () => {
     setCraftingItems(array);
   };
 
+  useEffect(() => {
+    sortItems('all');
+  }, [crafting.items]);
+
   useMemo(() => {
     sortItems('all');
   }, []);
@@ -47,7 +61,7 @@ const Crafting = () => {
             buttonClick('all');
           }}
         />
-        <div className={style.categories}>
+        <div className={style.categories} ref={scrollRef} onWheel={handleWheel}>
           {categories.length > 0 &&
             categories.map((item, index) => {
               return (
@@ -71,7 +85,8 @@ const Crafting = () => {
             icon={faMagnifyingGlass}
             style={{
               color: theme.white,
-              fontSize: '1.35vw',
+              fontSize: '1.15vw',
+              filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.5))',
             }}
           />
           <input
@@ -103,6 +118,31 @@ const Crafting = () => {
                   image={item.image}
                   isFave={item.category === 'fave'}
                   id={item.id}
+                  type={item.type === 'blueprint' ? 'blueprint' : 'item'}
+                  selected={
+                    crafting.currentItem
+                      ? crafting.currentItem.id === item.id
+                      : false
+                  }
+                />
+              );
+            })}
+        {blueprints.length > 0 &&
+          blueprints
+            .filter((item: craftingItem) => {
+              return search === ''
+                ? item
+                : item.name.toLowerCase().includes(search);
+            })
+            .map((item: craftingItem, index: number) => {
+              return (
+                <Blueprint
+                  key={index}
+                  name={item.name}
+                  image={item.image}
+                  isFave={item.category === 'fave'}
+                  id={item.id}
+                  type={'blaze'}
                   selected={
                     crafting.currentItem
                       ? crafting.currentItem.id === item.id

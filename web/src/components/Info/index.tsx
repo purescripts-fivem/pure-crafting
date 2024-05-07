@@ -5,6 +5,9 @@ import { useAppSelector } from '../../store/store';
 import Required from './Required';
 import Queue from './Queue';
 import Bottom from './Bottom';
+import { useEffect } from 'react';
+import updateRipples from '../../utils/updateRipples';
+import { sendNui } from '../../utils/sendNui';
 
 const Info = () => {
   const theme = useAppSelector((state) => state.config.theme);
@@ -12,6 +15,111 @@ const Info = () => {
   // const items = useAppSelector((state) => state.crafting);
   const item = useAppSelector((state) => state.crafting.currentItem);
   const queue = useAppSelector((state) => state.queue);
+
+  useEffect(() => {
+    updateRipples();
+  });
+
+  if (item && item.type === 'blaze') {
+    return (
+      <div
+        className={style.container}
+        style={{
+          background: theme.main,
+          border: `0.25vw solid ${theme.border}`,
+        }}>
+        <div className={style.header}>
+          <div
+            className={style.fave}
+            id='ripple-animation'
+            style={{
+              background: theme.button,
+              border: `0.2vw solid ${theme.border}`,
+              color: theme.white,
+            }}>
+            <FontAwesomeIcon icon={faStar} className={style.star} />
+          </div>
+          <div
+            className={style.imgHousing}
+            style={{
+              background: theme.button,
+              border: `0.2vw solid ${theme.border}`,
+            }}>
+            {item && <img src={item.image} className={style.img} />}
+          </div>
+          <div
+            className={style.textHousing}
+            style={{
+              color: theme.white,
+            }}>
+            <h1 className={style.heading}>
+              {item ? item.name : language.noItemSelected}
+            </h1>
+            <h2 className={style.description}>
+              {item ? item.description : language.noItemSelected}
+            </h2>
+            <div className={style.flex}>
+              <FontAwesomeIcon
+                icon={faClock}
+                className={style.icon}
+                style={{
+                  color: theme.green,
+                }}
+              />
+              <p
+                style={{
+                  color: theme.gray,
+                }}
+                className={style.smallText}>
+                {language.craftTime}{' '}
+                <span
+                  style={{
+                    color: theme.green,
+                  }}>
+                  {item ? item.craftingTime : 0}
+                  {language.s}
+                </span>
+              </p>
+            </div>
+            <div className={style.flex}>
+              <FontAwesomeIcon
+                icon={faHammer}
+                className={style.icon}
+                style={{
+                  color: theme.blue,
+                }}
+              />
+              <p
+                style={{
+                  color: theme.gray,
+                }}
+                className={style.smallText}>
+                {language.uses}{' '}
+                <span
+                  style={{
+                    color: theme.blue,
+                  }}>
+                  1
+                </span>
+              </p>
+            </div>
+            <div></div>
+          </div>
+        </div>
+        <div className={style.middle}>
+          <Required type='blaze' />
+        </div>
+        <div className={style.spacer}></div>
+        <div
+          className={style.queue}
+          style={{
+            background: theme.button,
+            border: `0.2vw solid ${theme.border}`,
+          }}></div>
+        <div className={style.bottom}>{/* <Bottom /> */}</div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -23,8 +131,15 @@ const Info = () => {
       <div className={style.header}>
         <div
           className={style.fave}
+          id='ripple-animation'
           onClick={() => {
-            console.log('onClick - set favourite');
+            if (!item || item?.type !== 'item') {
+              return;
+            }
+            sendNui('setFavourite', {
+              itemName: item.itemName,
+              category: item.category,
+            });
           }}
           style={{
             background: theme.button,
@@ -38,7 +153,9 @@ const Info = () => {
           style={{
             background: theme.button,
             border: `0.2vw solid ${theme.border}`,
-          }}></div>
+          }}>
+          {item && <img src={item.image} className={style.img} />}
+        </div>
         <div
           className={style.textHousing}
           style={{
@@ -48,7 +165,7 @@ const Info = () => {
             {item ? item.name : language.noItemSelected}
           </h1>
           <h2 className={style.description}>
-            {item ? item.name : language.noItemSelected}
+            {item ? item.description : language.noItemSelected}
           </h2>
           <div className={style.flex}>
             <FontAwesomeIcon
@@ -91,7 +208,7 @@ const Info = () => {
                 style={{
                   color: theme.blue,
                 }}>
-                {item ? item.uses : 0}
+                {item ? (item.uses ? item.uses : 0) : 0}
               </span>
             </p>
           </div>
@@ -99,7 +216,7 @@ const Info = () => {
         </div>
       </div>
       <div className={style.middle}>
-        <Required />
+        <Required type='ignore' />
       </div>
       <div className={style.spacer}></div>
       <div

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useAppSelector } from '../../../store/store';
 import style from './index.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import updateRipples from '../../../utils/updateRipples';
 
 interface Props {
   onClick: () => void;
@@ -9,6 +11,10 @@ interface Props {
 
 const Button = (props: Props) => {
   const theme = useAppSelector((state) => state.config.theme);
+
+  useEffect(() => {
+    updateRipples();
+  });
   return (
     <div
       className={style.container}
@@ -18,7 +24,8 @@ const Button = (props: Props) => {
       }}
       onClick={() => {
         props.onClick();
-      }}>
+      }}
+      id='ripple-animation'>
       <i
         className={`fa ${props.icon}` + ' ' + style.icon}
         style={{

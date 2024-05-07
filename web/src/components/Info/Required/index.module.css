@@ -7,17 +7,24 @@
 }
 
 .text {
-  font-size: 1.85vw;
+  font-size: 1.5vw;
   text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
     0px 4px 7px rgba(0, 0, 0, 0.25);
   font-family: 'Black';
   position: absolute;
-  margin-top: -24vh;
-  margin-left: -22vw;
+  margin-top: -20vh;
+  margin-left: -17.5vw;
+}
+
+.text2 {
+  font-size: 1.5vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
+    0px 4px 7px rgba(0, 0, 0, 0.25);
+  font-family: 'Black';
 }
 
 .housing {
-  margin-top: 4.5vh;
+  margin-top: 3vh;
   width: 85%;
   height: 65%;
   display: flex;
@@ -25,6 +32,7 @@
   align-items: center;
   flex-direction: row;
   gap: 3.5vw;
-  overflow-y: auto;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }

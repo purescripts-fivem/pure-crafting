@@ -1,12 +1,14 @@
 import { useAppDistpatch, useAppSelector } from '../../../store/store';
 import style from './index.module.css';
-import { setAmount } from '../../../store/stores/crafting/craft';
 import { sendNui } from '../../../utils/sendNui';
+import { useEffect } from 'react';
+import updateRipples from '../../../utils/updateRipples';
+import { setAmount } from '../../../store/stores/crafting/crafting';
 
 const Bottom = () => {
   const theme = useAppSelector((state) => state.config.theme);
   const language = useAppSelector((state) => state.config.language);
-  const number = useAppSelector((state) => state.craft.amount);
+  const number = useAppSelector((state) => state.crafting.amount);
   const currentItem = useAppSelector((state) => state.crafting.selectedItem);
   const item = useAppSelector((state) => state.crafting.currentItem);
   const dispatch = useAppDistpatch();
@@ -42,12 +44,20 @@ const Bottom = () => {
     setNumber(number + 1);
   };
 
+  useEffect(() => {
+    updateRipples();
+  });
+
   return (
     <>
       <div className={style.buttonHousing}>
         <div
           className={style.button}
+          id='ripple-animation'
           onClick={() => {
+            if (item && item.type === 'blueprint') {
+              return;
+            }
             changeNumber(-1);
           }}
           style={{
@@ -62,6 +72,9 @@ const Bottom = () => {
           type='number'
           value={number}
           onChange={(e) => {
+            if (item && item.type === 'blueprint') {
+              return;
+            }
             setNumber(parseInt(e.target.value));
           }}
           className={style.input}
@@ -73,7 +86,11 @@ const Bottom = () => {
         />
         <div
           className={style.button}
+          id='ripple-animation'
           onClick={() => {
+            if (item && item.type === 'blueprint') {
+              return;
+            }
             changeNumber(1);
           }}
           style={{
@@ -87,7 +104,11 @@ const Bottom = () => {
       </div>
       <div
         className={style.craftButton}
+        id='ripple-animation'
         onClick={() => {
+          if (!item) {
+            return;
+          }
           const craftingSuccess = canCraft();
           if (!craftingSuccess) {
             sendNui('notEnoughItems', {});

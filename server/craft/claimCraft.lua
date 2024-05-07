@@ -1,57 +1,53 @@
-function Queue:claimCraft(id, index)
+function Queue:claimCraft(id, index, source)
     local index = index + 1
     local item = self.finished[index]
     if not item then
         debugPrint('Queue:claimCraft | failed - no item', index, json.encode(self.finished))
         return
     end
-    local itemData = nil
-    for i = 1, #Config.items do
-        if Config.items[i].id == id then
-            itemData = Config.items[i]
-            break
-        end
-    end
+    local itemData = getItemFromId(tostring(id), self.type)
     if not itemData then
-        debugPrint('Queue:claimCraft | failed - no itemData', id, json.encode(Config.items))
+        debugPrint('Queue:claimCraft | failed - no itemData', id, json.encode(CraftableItems))
         return
     end
-    giveItem(self.source, itemData.name, itemData.amount)
+    giveItem(source, itemData.name, 1)
     table.remove(self.finished, index)
     self:triggerEvent('pure-crafting:updateFinished', self.finished)
     local affectedRows = MySQL.update.await('UPDATE crafting_benches SET finished = ? WHERE id = ?', {
         json.encode(self.finished), self.benchId
     })
     debugPrint('Queue:claimCraft | ', json.encode(item), json.encode(self.finished))
+    local items = generateItems(source, self.benchId, self.type)
+    TriggerClientEvent('pure-crafting:updateItems', source, items)
     return true
 end
 
-function Queue:cancelCraft(id, index)
+function Queue:cancelCraft(id, index, source)
     local index = index + 1
     local item = self.items[index]
     if not item then
         debugPrint('Queue:cancelCraft | failed - no item', index, json.encode(self.items))
         return
     end
-    local itemData = nil
-    for i = 1, #Config.items do
-        if Config.items[i].id == id then
-            itemData = Config.items[i]
-            break
-        end
-    end
+    local itemData = getItemFromId(tostring(id), self.type)
     if not itemData then
-        debugPrint('Queue:cancelCraft | failed - no itemData', id, json.encode(Config.items))
+        debugPrint('Queue:cancelCraft | failed - no itemData', id, json.encode(Config.items[self.type]))
         return
     end
-    -- Give them back their items
-    print('Item removed from queue', json.encode(itemData))
+    for i = 1, #itemData.requiredItems do 
+        local requiredItem = itemData.requiredItems[i]
+        giveItem(source, requiredItem.itemName, requiredItem.amount)
+    end
     table.remove(self.items, index)
-    -- TriggerClientEvent('pure-crafting:updateQueue', self.source, self.items)
     local affectedRows = MySQL.update.await('UPDATE crafting_benches SET queue = ? WHERE id = ?', {
         json.encode(self.items), self.benchId
     })
     self:triggerEvent('pure-crafting:updateQueue', self.items)
+    local items = generateItems(source, self.benchId, self.type)
+    TriggerClientEvent('pure-crafting:updateItems', source, items)
     debugPrint('Queue:cancelCraft | ', json.encode(item), json.encode(self.items))
+    if itemData.blueprintId then
+        self:useBlueprint(source, itemData.blueprintId)
+    end
     return true
 end

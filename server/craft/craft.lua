@@ -16,23 +16,3 @@ function Queue:finishedCraft(craftedItem)
     self:triggerEvent('pure-crafting:finishedCraft', self.items, self.finished)
     return true
 end
-
-function Queue:add(item, amount)
-    for i = 1, amount do 
-        newItem = {
-            itemName = item.name,
-            image = item.image,
-            secondsLeft = item.craftingTime,
-            timeStarted = os.time(),
-            timeToCraft = item.craftingTime,
-            id = item.id
-        }
-        self.items[#self.items + 1] = newItem
-        self:triggerEvent('pure-crafting:addToQueue', newItem)
-    end
-    local affectedRows = MySQL.update.await('UPDATE crafting_benches SET queue = ? WHERE id = ?', {
-        json.encode(self.items), self.benchId
-    })
-    debugPrint('Queue:add | ', json.encode(item), json.encode(self.items))
-    return true
-end

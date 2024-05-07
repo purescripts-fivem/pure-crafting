@@ -5,11 +5,12 @@ interface Props {
   amount: number;
   myAmount: number;
   name: string;
+  image: string;
 }
 
 const Item = (props: Props) => {
   const theme = useAppSelector((state) => state.config.theme);
-  const number = useAppSelector((state) => state.craft.amount);
+  const number = useAppSelector((state) => state.crafting.amount);
   const hasEnough = props.myAmount - props.amount * number >= 0;
   return (
     <div className={style.container}>
@@ -19,7 +20,7 @@ const Item = (props: Props) => {
           background: hasEnough ? theme.greenFaded : theme.redFaded,
           border: `0.2vw solid ${theme.border}`,
         }}>
-        <img src='./weapon_appistol.png' className={style.img} />
+        <img src={props.image} className={style.img} />
         <p
           className={style.imgText}
           style={{

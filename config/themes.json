@@ -2,6 +2,7 @@
   "main": "#303030",
   "border": "#1F1F1F",
   "white": "#FFFFFF",
+  "blueprintGray": "#494949",
   "green": "#89BA33",
   "gray": "#949494",
   "red": "#A14050",
@@ -9,6 +10,15 @@
   "greenFaded": "#39463E",
   "redFaded": "#3D2525",
   "button": "#242424",
-  "popupBackground": "#303030",
-  "popupText": "#B2B2B2"
+  "popup": {
+    "background": "#303030",
+    "border": "#2C2C2C",
+    "text": "#B2B2B2",
+    "redBackground": "#6C1A1A",
+    "redBorder": "#8C1F1F",
+    "redText": "#D11616",
+    "greenBackground": "#1A6C20",
+    "greenBorder": "#1F8C26",
+    "greenText": "#16CD21"
+  }
 }

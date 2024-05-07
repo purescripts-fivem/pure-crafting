@@ -1,8 +1,29 @@
 function Queue:craftItem(amount, item, source)
     local canCraftItem = canCraftItem(source, item, amount)
     if not canCraftItem then return end
-    local item = self:add(item, amount)
-    return item
+    local items = generateItems(source, self.benchId, self.type)
+    TriggerClientEvent('pure-crafting:updateItems', source, items)
+    for i = 1, amount do 
+        newItem = {
+            itemName = item.itemName,
+            image = item.image,
+            secondsLeft = item.craftingTime,
+            timeStarted = os.time(),
+            timeToCraft = item.craftingTime,
+            id = item.id
+        }
+        self.items[#self.items + 1] = newItem
+        self:triggerEvent('pure-crafting:addToQueue', newItem)
+    end
+    local affectedRows = MySQL.update.await('UPDATE crafting_benches SET queue = ? WHERE id = ?', {
+        json.encode(self.items), self.benchId
+    })
+    debugPrint('Queue:add | ', json.encode(item), json.encode(self.items))
+    self:triggerEvent('pure-crafting:updateQueue', self.items)
+    if item.blueprintId then
+        self:removeBlueprint(source, item.blueprintId)
+    end
+    return true
 end
 
 function canCraftItem(source, item, amount)

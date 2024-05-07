@@ -1,5 +1,8 @@
 Queue = {}
 ActiveBenches = {}
+User = {}
+Players = {}
+
 
 --[[
     for faves:
@@ -7,60 +10,73 @@ ActiveBenches = {}
     check that the faves align with the items on the crafting bench to show these properly
 --]]
 
-function Queue:new(benchId, queue, finished)
+function Queue:new(benchId, queue, finished, blueprints, type)
     local data = {
         benchId = benchId,
         activeMembers = {},
         items = json.decode(queue),
         finished = json.decode(finished),
+        blueprints = json.decode(blueprints),
+        type = type
     }
 
     debugPrint('Queue:new | ', json.encode(data))
     return setmetatable(data, {__index = Queue})
 end
 
-function initQueue(benchId, queue, finished)
-    local bench = Queue:new(benchId, queue, finished)
+function initQueue(benchId, queue, finished, blueprints, type)
+    local bench = Queue:new(benchId, queue, finished, blueprints, type)
     ActiveBenches[tostring(benchId)] = bench
 end
 
-function Queue:triggerEvent(eventName, ...)
-    for i = 1, #self.activeMembers do
-        debugPrint('Queue:triggerEvent | Triggering event: ', eventName, self.activeMembers[i], ...)
-        TriggerClientEvent(eventName, self.activeMembers[i], ...)
+function User:new(source)
+    local uniqueId = getPlayerUniqueId(source)
+
+    local row = MySQL.single.await('SELECT `faves`, `amountPlaced` FROM `crafting_users` WHERE `uniqueId` = ? LIMIT 1', {
+        uniqueId
+    })
+
+    if not row then
+        debugPrint('User:new | No data for user: ', uniqueId)
+        return
     end
+
+    debugPrint('User:new | ', row.amountPlaced)
+
+    local data = {
+        source = source,
+        uniqueId = uniqueId,
+        faves = json.decode(row.faves),
+        amountPlaced = row.amountPlaced,
+    }
+
+    debugPrint('User:new | ', json.encode(data))
+
+    return setmetatable(data, {__index = User})
 end
 
-function Queue:removePlayer(source)
-    for i = 1, #self.activeMembers do
-        if self.activeMembers[i] == source then
-            table.remove(self.activeMembers, i)
-            break
+function initUser(source)
+    local user = User:new(source)
+    Players[tostring(source)] = user
+end
+
+function removeUser(source)
+    PlayerItems[tostring(source)] = nil
+    Players[tostring(source)] = nil
+end
+
+function checkPerson(source)
+    local user = Players[tostring(source)]
+    if not user then
+        local uniqueId = getPlayerUniqueId(source)
+        
+        local row = MySQL.single.await('SELECT `faves`, `amountPlaced` FROM `crafting_users` WHERE `uniqueId` = ? LIMIT 1', {
+            uniqueId
+        })
+    
+        if not row then
+            return
         end
     end
-    debugPrint('Queue:removePlayer | benchId: ', self.benchId, ' | sources online: ', json.encode(self.activeMembers))
+    return true
 end
-
-function Queue:addPlayer(source)
-    self.activeMembers[#self.activeMembers + 1] = source
-    debugPrint('Queue:addPlayer | benchId: ', self.benchId, ' | sources online: ', json.encode(self.activeMembers))
-end
-
-CreateThread(function()
-    while true do 
-        for k,v in pairs(ActiveBenches) do
-            local user = ActiveBenches[k]
-            if not user.items[1] then 
-                goto continue
-            end
-            local item = user.items[1]
-            item.secondsLeft = item.secondsLeft - 1
-            user:triggerEvent('pure-crafting:secondChange', user.items[1].secondsLeft)
-            if item.secondsLeft <= 0 then
-                user:finishedCraft(item)
-            end
-            ::continue::
-        end
-        Wait(1000)
-    end
-end)

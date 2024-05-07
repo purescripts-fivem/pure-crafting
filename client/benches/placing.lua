@@ -1,4 +1,4 @@
-local function placeBench()
+local function placingBench(type)
     RequestModel(Config.placingBench.object)
     local _, _, endCoords, surfaceNormal = raycast()
     local rot = normalToRotation(surfaceNormal)
@@ -70,17 +70,45 @@ local function placeBench()
 
         if IsDisabledControlJustPressed(0, Config.placingBench.placeControl) then
             lib.hideTextUI()
+            local checkZone = checkZone(GetEntityCoords(cache.ped))
+            if checkZone then 
+                notifySystem({
+                    title = _Lang('placingBench.inAnotherZone'),
+                    type = 'error',
+                    position = Config.libText.notfiyPoistion,
+                })
+                DeleteObject(object)
+                break
+            end
             if not canPlace then
-                print('cant place')
+                -- DeleteObject(object)
+                -- break
             else
                 DeleteObject(object)
-                local success = lib.callback.await('pure-crafting:createBench', false, endCoords, vector3(rot.x, rot.y, zRotation))
+                local success = lib.callback.await('pure-crafting:createBench', false, endCoords, vector3(rot.x, rot.y, zRotation), type)
                 return
             end
         end
     end
 end
 
-RegisterCommand('placeBench', function(source)
-    placeBench()
+RegisterNetEvent('pure-crafting:placebench', function(type)
+    placeBench(source, type)
 end)
+
+function placeBench(source, type)
+    local customChecks = customChecks(source)
+    if not customChecks then return end
+    local checkZone = checkZone(GetEntityCoords(cache.ped))
+    if checkZone then 
+        notifySystem({
+            title = _Lang('placingBench.inAnotherZone'),
+            type = 'error',
+            position = Config.libText.notfiyPoistion,
+        })
+        return 
+    end
+    placingBench(type)
+end
+
+exports('placeBench', placeBench)

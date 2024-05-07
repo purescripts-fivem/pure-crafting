@@ -1,32 +1,34 @@
 .container {
-  width: 8.5vw;
-  height: 15vh;
+  width: 7vw;
+  height: 12.7vh;
   filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.35));
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .fave {
   position: absolute;
-  font-size: 0.9vw;
+  font-size: 0.75vw;
   filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.45));
-  margin-top: -11.2vh;
-  margin-left: 6.2vw;
+  margin-top: -10vh;
+  margin-left: 5.3vw;
 }
 
 .icon {
   padding-bottom: 1vh;
   filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.35));
-  width: 5vw;
+  width: 7vh;
+  height: 7vh;
 }
 
 .text {
-  font-size: 1.12vw;
+  font-size: 0.9vw;
   position: absolute;
-  margin-top: 11vh;
+  margin-top: 9vh;
   text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
     0px 4px 7px rgba(0, 0, 0, 0.25);
   width: 8.5vw;

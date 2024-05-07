@@ -11,19 +11,21 @@ Config = {
     language = 'en',
 
     --[[
-        qb-inventory -
+        qb-inventory
+        esx
+        ox_inventory
+        ps-inventory
+        qs-inventory
     --]]
+
     inventory = 'qb-inventory', 
 
-    debug = true, -- This just enables debug prints, if having issues with your script, enable this and then check the console and react out to me in the discord
-    
+    debug = false, -- This just enables debug prints, if having issues with your script, enable this and then check the console and react out to me in the discord
+
     targetingOptions = {
-        -- TODO: finish target
-        interaction = 'interaction', -- 'target' or 'interaction'
+        interaction = 'target', -- 'target' or 'interaction'
 
         target = 'qb', -- if using target then this is the target system you use, 'ox', 'qb', 'standalone'
-
-        distance = 3.0, -- distance
     },
 
     placingBench = {
@@ -39,9 +41,11 @@ Config = {
 
         object = `prop_toolchest_05`, -- object to place
 
-        minusOffset = -1.0, -- this is the rotation y, for how it is placed on the ground for the red and green lines
+        minusOffset = -5.0, -- this is the rotation y, for how it is placed on the ground for the red and green lines
 
-        plusOffset = 1.0 -- this is the rotation y, for how it is placed on the ground for the red and green lines
+        plusOffset = 5.0, -- this is the rotation y, for how it is placed on the ground for the red and green lines
+
+        limit = 3, -- limit on the amount of benches that can be placed by person, set this to nil if you want to have no limit
     },
 
     -- just of ox notify, can use your own goto client/notify and server/notify and replace the inside of the function
@@ -49,6 +53,13 @@ Config = {
         notfiyPoistion = 'center-left',
         textUIPosition = 'left-center',
     },
-}
 
--- TODO: make a limit on the amount you can place
+    -- these are the items in which allow you to place your bench down
+    benchItems = {
+        {itemName = 'weapon_bench', type = 'weapon'},
+        {itemName = 'misc_bench', type = 'misc'},
+        {itemName = 'attachments_bench', type = 'attachments'},
+    },
+
+    previewBlueprints = true, -- if you want to preview blueprints in the crafting menu
+}

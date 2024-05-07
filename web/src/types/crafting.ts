@@ -3,8 +3,10 @@ export interface craftingState {
   // [key: string]: craftingItem[];
 
   items: craftingItem[];
+  blueprints: craftingItem[];
   selectedItem: number;
   currentItem: craftingItem | null;
+  amount: number;
 }
 
 export interface item {
@@ -16,13 +18,14 @@ export interface item {
 }
 
 export interface craftingItem {
-  itemName: string;
-  name: string;
-  image: string;
-  category: string;
-  id: number;
-  description: string;
-  craftingTime: number;
-  uses: number;
+  itemName: string; //
+  name: string; //
+  image: string; //
+  category: string; //
+  id: number; //
+  description: string; //
+  craftingTime: number; //
+  uses?: number;
   requiredItems: item[];
+  type?: string;
 }

@@ -1,5 +1,5 @@
 .container {
-  width: 3.1vw;
+  width: 2.6vw;
   height: 100%;
   filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.35));
   display: flex;
@@ -7,9 +7,11 @@
   align-items: center;
   flex-shrink: 0;
   cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .icon {
-  font-size: 1.3vw;
+  font-size: 1.1vw;
   filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.45));
 }

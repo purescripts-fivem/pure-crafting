@@ -7,8 +7,3 @@ function getPlayerUniqueId(source)
     if not player then return end
     return player.PlayerData.citizenid
 end
-
-function getPlayerName(source)
-    local player = QBCore.Functions.GetPlayer(source)
-    return player.PlayerData.charinfo.firstname .. ' ' .. player.PlayerData.charinfo.lastname
-end

@@ -17,7 +17,7 @@ function setupBenches(source)
                 {
                     type = 'client',
                     action = function()
-                        print('client')
+                        openCrafting(source, bench.id)
                     end,
                     icon = 'fas fa-wrench',
                     label = 'Use Bench',
@@ -26,12 +26,13 @@ function setupBenches(source)
                     end
                 }
             },
-            distance = Config.targetingOptions.distance,
+            distance = 1.0,
             location = location,
         }
 
         if Config.targetingOptions.interaction == 'target' then 
-            --  TODO: setup target
+            local name = 'bench_'.. bench.id
+            addTargetToCoords(location, vector3(2, 2, 2), tableForTarget, name)
         end
 
         setupBenchZone(location, rotation, vector3(3, 3, 4))
@@ -52,7 +53,7 @@ function insertBench(newBench)
             {
                 type = 'client',
                 action = function()
-                    print('client')
+                    openCrafting(source, newBench.id)
                 end,
                 icon = 'fas fa-wrench',
                 label = 'Use Bench',
@@ -61,12 +62,13 @@ function insertBench(newBench)
                 end
             }
         },
-        distance = Config.targetingOptions.distance,
+        distance = 1.0,
         location = location,
     }
 
     if Config.targetingOptions.interaction == 'target' then 
-        --  TODO: setup target
+        local name = 'bench_'.. newBench.id
+        addTargetToCoords(location, vector3(2, 2, 2), tableForTarget, name)
     end
 
     setupBenchZone(location, rotation, vector3(3, 3, 4))

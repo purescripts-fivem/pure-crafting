@@ -8,6 +8,7 @@ import React, {
 import { useNuiEvent } from '../hooks/useNuiEvent';
 import { fetchNui } from '../utils/fetchNui';
 import { isEnvBrowser } from '../utils/misc';
+import updateRipples from '../utils/updateRipples';
 
 const VisibilityCtx = createContext<VisibilityProviderValue | null>(null);
 
@@ -37,7 +38,7 @@ export const VisibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     };
 
     window.addEventListener('keydown', keyHandler);
-    // updateRipples();
+    updateRipples();
     return () => window.removeEventListener('keydown', keyHandler);
   }, [visible]);
 

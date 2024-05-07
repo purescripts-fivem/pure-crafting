@@ -1,6 +1,6 @@
 .container {
-  width: 8.5vw;
-  height: 17.7vh;
+  width: 8vw;
+  height: 16vh;
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
@@ -18,19 +18,19 @@
 }
 
 .imgText {
-  font-size: 1.18vw;
+  font-size: 1vw;
   text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.3), -3px 0px 7px rgba(0, 0, 0, 0.3),
     0px 4px 7px rgba(0, 0, 0, 0.3);
   position: absolute;
-  top: 11vh;
+  top: 9.3vh;
   right: 0.5vh;
 }
 
 .text {
   width: 100%;
-  height: 2vh;
+  height: 2.5vh;
   text-align: center;
-  font-size: 1.12vw;
+  font-size: 1.05vw;
   text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
     0px 4px 7px rgba(0, 0, 0, 0.25);
 }

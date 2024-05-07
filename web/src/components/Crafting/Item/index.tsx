@@ -3,6 +3,8 @@ import { useAppDistpatch, useAppSelector } from '../../../store/store';
 import style from './index.module.css';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { setSelected } from '../../../store/stores/crafting/crafting';
+import { useEffect } from 'react';
+import updateRipples from '../../../utils/updateRipples';
 
 interface Props {
   name: string;
@@ -10,20 +12,31 @@ interface Props {
   isFave: boolean;
   id: number;
   selected: boolean;
+  type: string;
 }
 
 const Item = (props: Props) => {
   const theme = useAppSelector((state) => state.config.theme);
   const dispatch = useAppDistpatch();
+
+  useEffect(() => {
+    updateRipples();
+  });
   return (
     <div
-      className={style.container}
+      className={style.container + ' center-ripple'}
       style={{
         background: theme.main,
         border: `0.2vw solid ${props.selected ? theme.white : theme.border}`,
       }}
+      id='ripple-animation'
       onClick={() => {
-        dispatch(setSelected(props.id));
+        dispatch(
+          setSelected({
+            id: props.id,
+            type: props.type,
+          })
+        );
       }}>
       {props.isFave && (
         <FontAwesomeIcon
@@ -34,7 +47,7 @@ const Item = (props: Props) => {
           }}
         />
       )}
-      <img src={`url(${props.image})`} className={style.icon} />
+      <img src={props.image} className={style.icon} />
       <h1
         className={style.text}
         style={{
