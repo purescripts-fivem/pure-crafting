@@ -20,7 +20,6 @@ function generateItems(source, benchId, type)
             requiredItem.myAmount = myAmount
             if user then
                 local isFave = user:checkFave(item.itemName)
-                print(user.uniqueId, item.itemName, isFave)
                 item.category = isFave and 'fave' or item.category
             end
         end

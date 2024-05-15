@@ -25,7 +25,7 @@ function createBench(location, rotation)
     local object = CreateObject(Config.placingBench.object, location.x, location.y, location.z, false, false, false)
     SetEntityRotation(object, rotation.x, rotation.y, rotation.z, 1)
     PlaceObjectOnGroundProperly(object)
-    Wait(500)
+    Wait(1000)
     FreezeEntityPosition(object, true)
     SetEntityCanBeDamaged(object, false)
     return object

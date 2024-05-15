@@ -56,7 +56,7 @@ Config = {
 
     -- these are the items in which allow you to place your bench down
     benchItems = {
-        {itemName = 'weapon_bench', type = 'weapon'},
+        {itemName = 'weap_bench', type = 'weapon'},
         {itemName = 'misc_bench', type = 'misc'},
         -- {itemName = 'chicken_bench', type = 'cluckinBell'},
     },
@@ -66,4 +66,6 @@ Config = {
     enableFavourites = true, -- if you want to enable the favourites system
 
     unlimitedBlueprints = true, -- if you want blueprints to be unlimited uses
+
+    inventoryItemImagesAuto = true, -- if true it will automatically generate the images for the items in the inventory, if false you will need to add the images yourself wtihin the config
 }

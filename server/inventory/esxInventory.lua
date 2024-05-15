@@ -31,6 +31,17 @@ end
 
 --[[
 INSERT INTO `items` (name, label, weight) VALUES
-	('blueprint_lockpick', 'Lockpick Blueprint', 2)
-;
+	('weap_bench', 'Weapons Bench', 2),
+    ('misc_bench', 'Misc Bench', 2),
+    ('blueprint_molotov', 'Molotov Blueprint', 2),
+    ('blueprint_grip', 'Grip Blueprint', 2),
+    ('blueprint_suppressor', 'Suppressor Blueprint', 2),
+    ('blueprint_extendedclip', 'Extended Clip Blueprint', 2),
+    ('blueprint_scope', 'Scope Blueprint', 2),
+    ('blueprint_specialcarbine', 'Special Carbine Blueprint', 2),
+    ('blueprint_assaultrifle', 'Assaultrifle Blueprint', 2),
+    ('blueprint_advancedrifle', 'Advanced Rifle Blueprint', 2),
+    ('blueprint_sawnoffshotgun', 'Sawn Off Shotgun Blueprint', 2),
+    ('blueprint_machinepistol', 'Machine Pistol Blueprint', 2),    
+    ('blueprint_microsmg', 'Micro SMG Blueprint', 2),  
 ]]--

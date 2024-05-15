@@ -33,7 +33,7 @@ end
 -- THESE ARE EXAMPLES OF BLUEPRINTS / FOLLOW THE DOCS FOR MORE INFORMATION
 
 -- -- Crafting
--- weapon_bench                 = {name = 'weapon_bench', label = 'Weapons Bench', weight = 100, type = 'item', image = 'pure_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Weapons Bench'},
+-- weap_bench                 = {name = 'weap_bench', label = 'Weapons Bench', weight = 100, type = 'item', image = 'pure_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Weapons Bench'},
 -- misc_bench                   = {name = 'misc_bench', label = 'Misc Bench', weight = 100, type = 'item', image = 'pure_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Misc Bench'},
 
 -- -- Blueprints
