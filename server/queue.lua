@@ -4,19 +4,23 @@ User = {}
 Players = {}
 
 
---[[
-    for faves:
-    link it to the user and force the favourites to constantly be on there unless disabled in the config
-    check that the faves align with the items on the crafting bench to show these properly
---]]
-
 function Queue:new(benchId, queue, finished, blueprints, type)
+    local decodeBps = json.decode(blueprints)
+    local bpHash = {}
+
+    if decodeBps then
+        for i = 1, #decodeBps do
+            bpHash[decodeBps[i]] = true
+        end
+    end
+
     local data = {
         benchId = benchId,
         activeMembers = {},
         items = json.decode(queue),
         finished = json.decode(finished),
-        blueprints = json.decode(blueprints),
+        blueprints = decodeBps,
+        bpHash = bpHash,
         type = type
     }
 

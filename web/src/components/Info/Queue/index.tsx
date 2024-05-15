@@ -28,7 +28,8 @@ const Queue = (props: Props) => {
           dispatch(
             setPopup({
               showPopup: true,
-              popupText: language.claimCraftPopup,
+              popupTitle: language.claimCraft,
+              popupText: language.areYouSure,
               onSubmit: () => {
                 sendNui('claimCraft', {
                   id: props.id,
@@ -65,7 +66,8 @@ const Queue = (props: Props) => {
         dispatch(
           setPopup({
             showPopup: true,
-            popupText: language.cancelCraftPopup,
+            popupTitle: language.cancelCraft,
+            popupText: language.areYouSure,
             onSubmit: () => {
               sendNui('cancelCraft', {
                 id: props.id,

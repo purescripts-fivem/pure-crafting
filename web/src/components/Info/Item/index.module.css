@@ -5,16 +5,18 @@
   flex-direction: column;
   gap: 0.5vh;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .housing {
-  width: 100%;
+  width: 8vw;
   height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.3vw;
   position: relative;
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15));
+  border-radius: 1px;
 }
 
 .imgText {

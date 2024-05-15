@@ -7,12 +7,11 @@ const initialState: craftingState = {
       itemName: 'assualtrifle',
       name: 'Assault Rifle',
       image:
-        'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+        'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
       category: 'fave',
       id: 0,
       description: 'A fuckin cool ar',
       craftingTime: 10,
-      uses: 4,
       requiredItems: [
         {
           itemName: 'wood',
@@ -20,7 +19,7 @@ const initialState: craftingState = {
           amount: 2,
           myAmount: 4,
           image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
         },
         {
           itemName: 'metal',
@@ -28,52 +27,19 @@ const initialState: craftingState = {
           amount: 2,
           myAmount: 1,
           image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
-        },
-        {
-          itemName: 'wood',
-          name: 'Wood',
-          amount: 2,
-          myAmount: 4,
-          image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
-        },
-        {
-          itemName: 'metal',
-          name: 'Metal',
-          amount: 2,
-          myAmount: 1,
-          image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
-        },
-        {
-          itemName: 'wood',
-          name: 'Wood',
-          amount: 2,
-          myAmount: 4,
-          image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
-        },
-        {
-          itemName: 'metal',
-          name: 'Metal',
-          amount: 2,
-          myAmount: 1,
-          image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
         },
       ],
     },
     {
       itemName: 'assualtrifle',
-      name: 'Blaze here',
+      name: 'Assault Rifle2',
       image:
-        'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+        'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
       category: 'fave',
       id: 3,
       description: 'A fuckin cool ar',
       craftingTime: 10,
-      uses: 4,
       requiredItems: [
         {
           itemName: 'wood',
@@ -81,7 +47,7 @@ const initialState: craftingState = {
           amount: 2,
           myAmount: 4,
           image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
         },
         {
           itemName: 'metal',
@@ -89,7 +55,97 @@ const initialState: craftingState = {
           amount: 2,
           myAmount: 1,
           image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+        },
+      ],
+    },
+    {
+      itemName: 'lockpick',
+      name: 'Lockpick',
+      type: 'blueprint',
+      image:
+        'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+      category: 'blueprints',
+      id: 9999,
+      description: 'Blueprint for a lockpick',
+      craftingTime: 10,
+      uses: 1,
+      requiredItems: [
+        {
+          itemName: 'wood',
+          name: 'Wood',
+          amount: 2,
+          myAmount: 4,
+          image:
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+        },
+        {
+          itemName: 'metal',
+          name: 'Metal',
+          amount: 2,
+          myAmount: 1,
+          image:
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+        },
+      ],
+    },
+    {
+      itemName: 'lockpick',
+      name: 'Lockpick',
+      type: 'blueprint',
+      image:
+        'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+      category: 'blueprints',
+      id: 9999,
+      description: 'Blueprint for a lockpick',
+      craftingTime: 10,
+      uses: 1,
+      requiredItems: [
+        {
+          itemName: 'wood',
+          name: 'Wood',
+          amount: 2,
+          myAmount: 4,
+          image:
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+        },
+        {
+          itemName: 'metal',
+          name: 'Metal',
+          amount: 2,
+          myAmount: 1,
+          image:
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+        },
+      ],
+    },
+    {
+      itemName: 'lockpick',
+      name: 'Lockpick',
+      type: 'blueprint',
+      image:
+        'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+      category: 'blueprints',
+      id: 9999,
+      description: 'Blueprint for a lockpick',
+      craftingTime: 10,
+      uses: 1,
+      requiredItems: [
+        {
+          itemName: 'wood',
+          name: 'Wood',
+          amount: 2,
+          myAmount: 4,
+          image:
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
+        },
+        {
+          itemName: 'metal',
+          name: 'Metal',
+          amount: 2,
+          myAmount: 1,
+          image:
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084690112544851/duffelbag.png?ex=663dffb8&is=663cae38&hm=45e7bb2338c6f18a784c5e154cbb35f89676f59431b86648ec5471095563a8cc&',
         },
       ],
     },
@@ -97,14 +153,14 @@ const initialState: craftingState = {
   blueprints: [
     {
       itemName: 'assualtrifle',
-      name: 'Blaze here',
+      name: 'Assault Rifle Blueprint',
       image:
-        'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
-      category: 'fave',
-      id: 3,
-      description: 'A fuckin cool ar',
+        'https://cdn.discordapp.com/attachments/789185814768386088/1238084689542123620/boogieboard.png?ex=663dffb8&is=663cae38&hm=fec9895177f964704e67814fd948d9ed336a62f6f3f1366ff326c7741544bd88&',
+      category: 'blueprints',
+      id: 35,
+      description: 'Assault Rifle Blueprint',
       craftingTime: 10,
-      uses: 4,
+      uses: 1,
       requiredItems: [
         {
           itemName: 'wood',
@@ -112,7 +168,7 @@ const initialState: craftingState = {
           amount: 2,
           myAmount: 4,
           image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084689542123620/boogieboard.png?ex=663dffb8&is=663cae38&hm=fec9895177f964704e67814fd948d9ed336a62f6f3f1366ff326c7741544bd88&',
         },
         {
           itemName: 'metal',
@@ -120,7 +176,7 @@ const initialState: craftingState = {
           amount: 2,
           myAmount: 1,
           image:
-            'https://media.discordapp.net/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66382cf6&is=6636db76&hm=b2f5b5059c7de1acc0ff0d75e00f4785035eb37795eacb7027ff1b8a8ec77ec3&=&format=webp&quality=lossless',
+            'https://cdn.discordapp.com/attachments/789185814768386088/1238084689542123620/boogieboard.png?ex=663dffb8&is=663cae38&hm=fec9895177f964704e67814fd948d9ed336a62f6f3f1366ff326c7741544bd88&',
         },
       ],
     },
@@ -135,11 +191,11 @@ export const craftingSlice = createSlice({
   initialState,
   reducers: {
     setItems: (state, action: PayloadAction<any>) => {
-      state.items = action.payload;
+      state.items = action.payload.items;
       // state.currentItem = null;
       // state.selectedItem = 0;
       if (!state.currentItem) return;
-      if (state.currentItem.type !== 'item') {
+      if (state.currentItem.type !== 'item' && !action.payload.confg) {
         state.currentItem = null;
         state.selectedItem = 0;
       } else {

@@ -43,7 +43,15 @@ function insertBench(location, rotation, source, type)
     Benches[#Benches + 1] = newBench
 
     TriggerClientEvent('pure-crafting:insertBench', -1, newBench)
-    initQueue(id, json.encode({}), json.encode({}), json.encode({}))
+    initQueue(id, json.encode({}), json.encode({}), json.encode({}), type)
+    for i = 1, #Config.benchItems do 
+        local benchItem = Config.benchItems[i].type
+        if benchItem == type then
+            local item = Config.benchItems[i].itemName
+            removeItem(source, item, 1)
+            break
+        end
+    end
     
     local user = Players[tostring(source)]
     if not user then return end

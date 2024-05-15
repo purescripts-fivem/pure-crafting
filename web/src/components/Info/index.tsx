@@ -12,6 +12,7 @@ import { sendNui } from '../../utils/sendNui';
 const Info = () => {
   const theme = useAppSelector((state) => state.config.theme);
   const language = useAppSelector((state) => state.config.language);
+  const config = useAppSelector((state) => state.config.config);
   // const items = useAppSelector((state) => state.crafting);
   const item = useAppSelector((state) => state.crafting.currentItem);
   const queue = useAppSelector((state) => state.queue);
@@ -129,25 +130,38 @@ const Info = () => {
         border: `0.25vw solid ${theme.border}`,
       }}>
       <div className={style.header}>
+        {config.enableFavourites && (
+          <div
+            className={style.fave}
+            id='ripple-animation'
+            onClick={() => {
+              if (!item || item?.type !== 'item') {
+                return;
+              }
+              sendNui('setFavourite', {
+                itemName: item.itemName,
+                category: item.category,
+              });
+            }}
+            style={{
+              background: theme.button,
+              border: `0.2vw solid ${theme.border}`,
+              color: theme.white,
+            }}>
+            <FontAwesomeIcon icon={faStar} className={style.star} />
+          </div>
+        )}
+        {/* {props.type === 'blueprint' && config.autoMakeBlueprint ? (
         <div
-          className={style.fave}
-          id='ripple-animation'
-          onClick={() => {
-            if (!item || item?.type !== 'item') {
-              return;
-            }
-            sendNui('setFavourite', {
-              itemName: item.itemName,
-              category: item.category,
-            });
-          }}
+          className={style.blueprint}
           style={{
-            background: theme.button,
-            border: `0.2vw solid ${theme.border}`,
-            color: theme.white,
+            backgroundImage: `url(https://media.discordapp.net/attachments/789185814768386088/1238088056699879524/blueprint2.png?ex=663e02db&is=663cb15b&hm=88247d8a3ff03679f30a432fa9a2e979f18347c78ccfa5a297f4e58749dc7037&=&format=webp&quality=lossless)`,
           }}>
-          <FontAwesomeIcon icon={faStar} className={style.star} />
+          <img src={props.image} className={style.icon} />
         </div>
+      ) : (
+        <img src={props.image} className={style.icon} />
+      )} */}
         <div
           className={style.imgHousing}
           style={{
@@ -190,28 +204,33 @@ const Info = () => {
               </span>
             </p>
           </div>
-          <div className={style.flex}>
-            <FontAwesomeIcon
-              icon={faHammer}
-              className={style.icon}
-              style={{
-                color: theme.blue,
-              }}
-            />
-            <p
-              style={{
-                color: theme.gray,
-              }}
-              className={style.smallText}>
-              {language.uses}{' '}
-              <span
-                style={{
-                  color: theme.blue,
-                }}>
-                {item ? (item.uses ? item.uses : 0) : 0}
-              </span>
-            </p>
-          </div>
+          {item &&
+            item.uses &&
+            item.uses > 1 &&
+            !config.unlimitedBlueprints && (
+              <div className={style.flex}>
+                <FontAwesomeIcon
+                  icon={faHammer}
+                  className={style.icon}
+                  style={{
+                    color: theme.blue,
+                  }}
+                />
+                <p
+                  style={{
+                    color: theme.gray,
+                  }}
+                  className={style.smallText}>
+                  {language.uses}{' '}
+                  <span
+                    style={{
+                      color: theme.blue,
+                    }}>
+                    {item ? (item.uses ? item.uses : 0) : 0}
+                  </span>
+                </p>
+              </div>
+            )}
           <div></div>
         </div>
       </div>

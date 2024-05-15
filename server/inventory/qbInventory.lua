@@ -20,7 +20,6 @@ end
 
 function giveItem(source, item, amount)
     local player = QBCore.Functions.GetPlayer(source)
-    -- exports['qb-inventory']:AddItem(source, item, amount)
     player.Functions.AddItem(item, amount)
     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], 'add')
 end
@@ -33,9 +32,19 @@ end
 
 -- THESE ARE EXAMPLES OF BLUEPRINTS / FOLLOW THE DOCS FOR MORE INFORMATION
 
--- Add these to your qb-core/shared/items.lua
--- blueprint_lockpick           = {name = 'blueprint_lockpick', label = 'Lockpick Blueprint', weight = 100, type = 'item', image = 'blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Lockpick Blueprint'},
+-- -- Crafting
+-- weapon_bench                 = {name = 'weapon_bench', label = 'Weapons Bench', weight = 100, type = 'item', image = 'pure_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Weapons Bench'},
+-- misc_bench                   = {name = 'misc_bench', label = 'Misc Bench', weight = 100, type = 'item', image = 'pure_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Misc Bench'},
 
--- weapon_bench                 = {name = 'weapon_bench', label = 'Weapons Bench', weight = 100, type = 'item', image = 'crafting_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Weapons Bench'},
--- misc_bench                   = {name = 'misc_bench', label = 'Misc Bench', weight = 100, type = 'item', image = 'crafting_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Misc Bench'},
--- attachments_bench            = {name = 'attachments_bench', label = 'Attachments Bench', weight = 100, type = 'item', image = 'crafting_bench.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'A Attachments Bench'},
+-- -- Blueprints
+-- blueprint_molotov            = {name = 'blueprint_molotov', label = 'Molotov Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Molotov Blueprint'},
+-- blueprint_grip               = {name = 'blueprint_grip', label = 'Grip Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Grip Blueprint'},
+-- blueprint_suppressor         = {name = 'blueprint_suppressor', label = 'Suppressor Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Suppressor Blueprint'},
+-- blueprint_extendedclip       = {name = 'blueprint_extendedclip', label = 'Extended Clip Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Extended Clip Blueprint'},
+-- blueprint_scope              = {name = 'blueprint_scope', label = 'Scope Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Scope Blueprint'},
+-- blueprint_specialcarbine     = {name = 'blueprint_specialcarbine', label = 'Special Carbine Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Special Carbine Blueprint'},
+-- blueprint_assaultrifle       = {name = 'blueprint_assaultrifle', label = 'Assault Rifle Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Assault Rifle Blueprint'},
+-- blueprint_advancedrifle      = {name = 'blueprint_advancedrifle', label = 'Advanced Rifle Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Advanced Rifle Blueprint'},
+-- blueprint_sawnoffshotgun     = {name = 'blueprint_sawnoffshotgun', label = 'Sawn Off Shotgun Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Sawn Off Shotgun Blueprint'},
+-- blueprint_machinepistol      = {name = 'blueprint_machinepistol', label = 'Machine Pistol Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Machien Pistol Blueprint'},
+-- blueprint_microsmg           = {name = 'blueprint_microsmg', label = 'Microsmg Blueprint', weight = 100, type = 'item', image = 'pure_blueprint.png', unique = false, useable = true, shouldClose = true, combinable = nil, description = 'Microsmg Blueprint'},

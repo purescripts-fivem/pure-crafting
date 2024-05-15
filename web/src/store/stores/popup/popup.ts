@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface popupState {
   showPopup: boolean;
+  popupTitle: string;
   popupText: string;
   onSubmit: () => void;
   onCancel: () => void;
@@ -9,6 +10,7 @@ export interface popupState {
 
 const initialState: popupState = {
   showPopup: false,
+  popupTitle: '',
   popupText: '',
   onSubmit: () => {
     console.log('onSubmit');
@@ -24,6 +26,7 @@ export const popupSlice = createSlice({
   reducers: {
     setPopup: (state, action: PayloadAction<popupState>) => {
       state.showPopup = action.payload.showPopup;
+      state.popupTitle = action.payload.popupTitle;
       state.popupText = action.payload.popupText;
       state.onSubmit = action.payload.onSubmit;
       state.onCancel = action.payload.onCancel;

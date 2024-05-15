@@ -10,7 +10,7 @@ function Queue:claimCraft(id, index, source)
         debugPrint('Queue:claimCraft | failed - no itemData', id, json.encode(CraftableItems))
         return
     end
-    giveItem(source, itemData.name, 1)
+    giveItem(source, itemData.itemName, 1)
     table.remove(self.finished, index)
     self:triggerEvent('pure-crafting:updateFinished', self.finished)
     local affectedRows = MySQL.update.await('UPDATE crafting_benches SET finished = ? WHERE id = ?', {
@@ -46,7 +46,7 @@ function Queue:cancelCraft(id, index, source)
     local items = generateItems(source, self.benchId, self.type)
     TriggerClientEvent('pure-crafting:updateItems', source, items)
     debugPrint('Queue:cancelCraft | ', json.encode(item), json.encode(self.items))
-    if itemData.blueprintId then
+    if itemData.blueprintId and not Config.unlimitedBlueprints then
         self:useBlueprint(source, itemData.blueprintId)
     end
     return true

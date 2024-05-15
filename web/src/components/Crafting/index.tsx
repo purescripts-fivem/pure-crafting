@@ -16,6 +16,7 @@ const Crafting = () => {
   const [craftingItems, setCraftingItems] = useState<craftingItem[]>([]);
   const [search, setSearch] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [displayBlueprints, setDisplayBlueprints] = useState(false);
 
   const buttonClick = (category: string) => {
     sortItems(category);
@@ -33,6 +34,7 @@ const Crafting = () => {
     if (category === 'all') {
       array = crafting.items;
       setCraftingItems(array);
+      setDisplayBlueprints(true);
       return;
     }
 
@@ -41,6 +43,13 @@ const Crafting = () => {
         array.push(item);
       }
     });
+
+    if (category === 'fave') {
+      setDisplayBlueprints(false);
+    } else {
+      setDisplayBlueprints(true);
+    }
+
     setCraftingItems(array);
   };
 
@@ -128,6 +137,7 @@ const Crafting = () => {
               );
             })}
         {blueprints.length > 0 &&
+          displayBlueprints &&
           blueprints
             .filter((item: craftingItem) => {
               return search === ''

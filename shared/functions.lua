@@ -27,10 +27,13 @@ function getItemFromId(id, type)
 end
 
 function getBlueprintsFromType(type)
+  if not Config.previewBlueprints then
+    return {}
+  end
   local items = BlueprintsToSend[type]
   if not items then
     debugPrint('getBlueprintsFromType | failed - no items', type)
-    return
+    return {}
   end
   return items
 end

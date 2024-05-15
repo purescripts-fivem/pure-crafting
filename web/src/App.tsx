@@ -31,6 +31,7 @@ const App = () => {
   const [loaded, setLoaded] = useState(false);
   const [configLoaded, setConfigLoaded] = useState(false);
   const popup = useAppSelector((state) => state.popup);
+  const config = useAppSelector((state) => state.config.config);
 
   useMemo(() => {
     const asyncConfig = async () => {
@@ -132,6 +133,64 @@ const App = () => {
               },
             ],
           },
+          {
+            itemName: 'assualtrifle',
+            name: 'Assault Rifle2',
+            image:
+              'https://cdn.discordapp.com/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66323e36&is=6630ecb6&hm=2ffdb3677fc28dbf9ebd1c3d402e44350e794f29564b5cb302077f37a797890e&',
+            category: 'fave',
+            id: 3,
+            description: 'A fuckin cool ar',
+            craftingTime: 10,
+            requiredItems: [
+              {
+                itemName: 'wood',
+                name: 'Wood',
+                amount: 2,
+                myAmount: 4,
+                image:
+                  'https://cdn.discordapp.com/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66323e36&is=6630ecb6&hm=2ffdb3677fc28dbf9ebd1c3d402e44350e794f29564b5cb302077f37a797890e&',
+              },
+              {
+                itemName: 'metal',
+                name: 'Metal',
+                amount: 2,
+                myAmount: 1,
+                image:
+                  'https://cdn.discordapp.com/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66323e36&is=6630ecb6&hm=2ffdb3677fc28dbf9ebd1c3d402e44350e794f29564b5cb302077f37a797890e&',
+              },
+            ],
+          },
+          {
+            itemName: 'lockpick',
+            name: 'Lockpick',
+            type: 'blueprint',
+            image:
+              'https://cdn.discordapp.com/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66323e36&is=6630ecb6&hm=2ffdb3677fc28dbf9ebd1c3d402e44350e794f29564b5cb302077f37a797890e&',
+            category: 'blueprints',
+            id: 9999,
+            description: 'Blueprint for a lockpick',
+            craftingTime: 10,
+            uses: 1,
+            requiredItems: [
+              {
+                itemName: 'wood',
+                name: 'Wood',
+                amount: 2,
+                myAmount: 4,
+                image:
+                  'https://cdn.discordapp.com/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66323e36&is=6630ecb6&hm=2ffdb3677fc28dbf9ebd1c3d402e44350e794f29564b5cb302077f37a797890e&',
+              },
+              {
+                itemName: 'metal',
+                name: 'Metal',
+                amount: 2,
+                myAmount: 1,
+                image:
+                  'https://cdn.discordapp.com/attachments/789185814768386088/1233403703856201739/paintscraper.png?ex=66323e36&is=6630ecb6&hm=2ffdb3677fc28dbf9ebd1c3d402e44350e794f29564b5cb302077f37a797890e&',
+              },
+            ],
+          },
         ],
         categories: [
           {
@@ -142,15 +201,9 @@ const App = () => {
             icon: 'fa-pen-ruler',
             category: 'blueprints',
           },
-          {
-            icon: 'fa-burger',
-            category: 'burger',
-          },
-          {
-            icon: 'fa-gun',
-            category: 'guns',
-          },
         ],
+        enableFavourites: true,
+        unlimitedBlueprints: true,
       }
     )
       .then((config) => {
@@ -171,12 +224,13 @@ const App = () => {
         craftTime: 'Crafting Time:',
         s: 's',
         uses: 'Uses:',
-        claim: 'Claim',
-        cancel: 'Cancel',
+        claim: 'CONFIRM',
+        cancel: 'CANCEL',
         yes: 'Yes',
         no: 'No',
-        cancelCraftPopup: 'Are you sure you want to cancel this craft?',
-        claimCraftPopup: 'Are you sure you want to claim this craft?',
+        claimCraft: 'Claim Craft',
+        cancelCraft: 'Cancel Craft',
+        areYouSure: 'Are you sure you want to do this?',
         noItemSelected: 'No item selected',
         required: 'Items Required:',
         unlockBP: 'Unlock Blueprint',
@@ -189,7 +243,7 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [dispatch]);
+  }, []);
 
   useNuiEvent('addToQueue', (data) => {
     dispatch(addItem(data));
@@ -216,7 +270,11 @@ const App = () => {
   });
 
   useNuiEvent('itemsChange', (data) => {
-    dispatch(setItems(data));
+    const test = {
+      items: data,
+      confg: config.unlimitedBlueprints,
+    };
+    dispatch(setItems(test));
   });
 
   useNuiEvent('blueprints', (data) => {
@@ -234,21 +292,14 @@ const App = () => {
     <>
       {/* <div
         style={{
-          backgroundImage: `url(https://media.discordapp.net/attachments/789185814768386088/1236010925967015996/CRAFTINGPREVIEW.png?ex=6639c020&is=66386ea0&hm=b0a7eeb0375792d3f544076512507e88536e6d6001b3a8f85e75253befa99b87&=&format=webp&quality=lossless&width=1202&height=676)`,
+          backgroundImage: `url(https://cdn.discordapp.com/attachments/1136047160937422928/1239628662228123678/image.png?ex=66439da8&is=66424c28&hm=b48da3b0773219b31f13df0e1434aa005e256b1b8701ee968198e8925bb31225&)`,
           zIndex: -1,
         }}
         className={style.container}></div> */}
       <Suspense fallback={<div>Loading...</div>}>
         {popup.showPopup && <Popup />}
       </Suspense>
-      <div
-        className={style.container}
-        style={
-          {
-            // marginTop: '1.75vh',
-            // marginLeft: '-0.6vw',
-          }
-        }>
+      <div className={style.container}>
         <Crafting />
         <Info />
       </div>

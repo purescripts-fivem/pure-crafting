@@ -20,12 +20,14 @@ const ConfirmPopup = () => {
       <div
         className={style.popup}
         style={{
-          background: theme.popup.background,
-          border: `0.2vw solid ${theme.popup.border}`,
-          color: theme.popup.text,
-          backgroundImage: `url(./popup_bg.png)`,
+          // background: theme.popup.background,
+          // background: 'radial-gradient(50% 50% at 50% 50%, rgba(67, 67, 67, 1) 0%, rgba(37, 37, 37, 1) 100%)',
+          // border: `0.2vw solid ${theme.popup.border}`,
+          color: theme.white,
+          // backgroundImage: `url(./popup_bg.png)`,
         }}>
-        <h1 className={style.text}>{popup.popupText}</h1>
+        <h1 className={style.text}>{popup.popupTitle}</h1>
+        <h1 className={style.text2}>{popup.popupText}</h1>
         <div
           className={style.boxes}
           style={{
@@ -34,40 +36,40 @@ const ConfirmPopup = () => {
           <div
             className={style.button}
             onClick={() => {
-              popup.onCancel();
-              // dispatch(setInMenu(false));
+              popup.onSubmit();
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.color = theme.popup.redText;
+              e.currentTarget.style.background = `radial-gradient(50% 50% at 50% 50%, #4ADF47 0%, #158d13 100%)`;
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.color = theme.popup.redBorder;
+              e.currentTarget.style.background = `radial-gradient(60% 60% at 50% 50%, #4ADF47 0%, #169814 100%)`;
             }}
             style={{
-              background: theme.popup.redBackground,
-              border: `0.25vw solid ${theme.popup.redBorder}`,
-              color: theme.popup.redBorder,
+              background:
+                'radial-gradient(60% 60% at 50% 50%, #4ADF47 0%, #169814 100%)',
+              border: `0.15vw solid rgba(70, 255, 78, 1)`,
+              color: 'rgba(0, 253, 25, 1)',
             }}>
-            {language.cancel}
+            {language.claim}
           </div>
           <div
             className={style.button}
             onClick={() => {
-              popup.onSubmit();
-              // dispatch(setInMenu(false));
+              popup.onCancel();
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.color = theme.popup.greenText;
+              e.currentTarget.style.background = `radial-gradient(50% 50% at 50% 50%, #DB3F3F 0%, #a51919 100%)`;
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.color = theme.popup.greenBorder;
+              e.currentTarget.style.background = `radial-gradient(60% 60% at 50% 50%, #DB3F3F 0%, #AA2020 100%)`;
             }}
             style={{
-              background: theme.popup.greenBackground,
-              border: `0.25vw solid ${theme.popup.greenBorder}`,
-              color: theme.popup.greenBorder,
+              background:
+                'radial-gradient(60% 60% at 50% 50%, #DB3F3F 0%, #AA2020 100%)',
+              border: `0.15vw solid rgba(234, 47, 47, 1)`,
+              color: 'rgba(255, 61, 61, 1)',
             }}>
-            {language.claim}
+            {language.cancel}
           </div>
         </div>
       </div>

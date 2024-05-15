@@ -20,7 +20,7 @@ function Queue:craftItem(amount, item, source)
     })
     debugPrint('Queue:add | ', json.encode(item), json.encode(self.items))
     self:triggerEvent('pure-crafting:updateQueue', self.items)
-    if item.blueprintId then
+    if item.blueprintId and not Config.unlimitedBlueprints then
         self:removeBlueprint(source, item.blueprintId)
     end
     return true

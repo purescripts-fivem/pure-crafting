@@ -44,6 +44,7 @@ function User:removeFave(itemName)
 end
 
 function User:checkFave(itemName)
+    print('Checking fave', itemName, json.encode(self.faves, {indent = true}))
     for i = 1, #self.faves do
         if self.faves[i].itemName == itemName then
             return true

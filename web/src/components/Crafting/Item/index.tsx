@@ -17,6 +17,7 @@ interface Props {
 
 const Item = (props: Props) => {
   const theme = useAppSelector((state) => state.config.theme);
+  const config = useAppSelector((state) => state.config.config);
   const dispatch = useAppDistpatch();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Item = (props: Props) => {
           })
         );
       }}>
-      {props.isFave && (
+      {props.isFave && config.enableFavourites && (
         <FontAwesomeIcon
           icon={faStar}
           className={style.fave}

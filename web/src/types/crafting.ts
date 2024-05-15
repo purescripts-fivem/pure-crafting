@@ -21,7 +21,7 @@ export interface craftingItem {
   itemName: string; //
   name: string; //
   image: string; //
-  category: string; //
+  category?: string; //
   id: number; //
   description: string; //
   craftingTime: number; //

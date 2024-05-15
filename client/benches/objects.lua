@@ -21,11 +21,11 @@ function deleteBench(id)
 end
 
 function createBench(location, rotation)
-    RequestModel(`prop_toolchest_05`)
-    local object = CreateObject(`prop_toolchest_05`, location.x, location.y, location.z, false, false, false)
+    RequestModel(Config.placingBench.object)
+    local object = CreateObject(Config.placingBench.object, location.x, location.y, location.z, false, false, false)
     SetEntityRotation(object, rotation.x, rotation.y, rotation.z, 1)
     PlaceObjectOnGroundProperly(object)
-    -- Wait(150)
+    Wait(500)
     FreezeEntityPosition(object, true)
     SetEntityCanBeDamaged(object, false)
     return object

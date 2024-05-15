@@ -26,11 +26,6 @@
   align-items: center;
 }
 
-.img {
-  width: 7.4vw;
-  height: 7.4vw;
-}
-
 .textHousing {
   height: 15vh;
   width: 21vw;
@@ -38,6 +33,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.6vw;
+}
+
+.img {
+  width: 7vw;
+  height: 7vw;
 }
 
 .heading {

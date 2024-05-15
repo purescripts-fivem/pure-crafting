@@ -1,10 +1,10 @@
-RegisterCommand('placebench', function(source)
-    local customChecks = customChecks(source)
-    local checks = limitChecker(source)
-    Wait(150)
-    if not checks then return end
-    TriggerClientEvent('pure-crafting:placebench', source, 'attachments')
-end)
+-- RegisterCommand('placebench', function(source)
+--     local customChecks = customChecks(source)
+--     local checks = limitChecker(source)
+--     Wait(150)
+--     if not checks then return end
+--     TriggerClientEvent('pure-crafting:placebench', source, 'attachments')
+-- end)
 
 function limitChecker(source)
     -- Notify and checks and shit
@@ -20,7 +20,7 @@ function limitChecker(source)
         local id = MySQL.insert.await('INSERT INTO `crafting_users` (uniqueId) VALUES (?)', {
             uniqueId
         })
-        local user = User:new(source)
+        user = User:new(source)
         Players[tostring(source)] = user
         return true
     end
@@ -37,3 +37,19 @@ function limitChecker(source)
     end
     return true
 end
+
+function serverChecks(source)
+    local customChecks = customChecks(source)
+    local checks = limitChecker(source)
+    Wait(150)
+    if not checks then return end
+    return true
+end
+
+-- RegisterNetEvent('pure-crafting:beforeBenches', function(type)
+    -- local customChecks = customChecks(source)
+    -- local checks = limitChecker(source)
+    -- Wait(150)
+    -- if not checks then return end
+--     TriggerClientEvent('pure-crafting:placebench', source, type)
+-- end)

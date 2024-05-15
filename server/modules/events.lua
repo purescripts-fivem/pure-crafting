@@ -8,8 +8,7 @@ RegisterNetEvent('pure-crafting:enterZone', function(benchId)
     local bench = ActiveBenches[tostring(benchId)]
     if not bench then 
         print('bench not found', benchId, source)
-        -- TODO: Fix this
-        -- initQueue(benchId, json.encode({}), json.encode({}), json.encode({}))
+        return
     end
     bench:addPlayer(source)
 end)

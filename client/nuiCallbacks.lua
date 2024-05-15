@@ -1,5 +1,8 @@
 RegisterNUICallback('getConfig', function(_, cb)
     debugPrint('getConfig')
+    if not Config.enableFavourites then
+        Config.categories[1] = nil
+    end
     cb(Config)
 end)
 

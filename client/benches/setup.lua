@@ -77,3 +77,9 @@ function insertBench(newBench)
     newBench.obj = benchObj
     Benches[#Benches + 1] = newBench
 end
+
+RegisterNetEvent('pure-crafting:beforeBenches', function(data)
+    local serverChecks = lib.callback.await('pure-crafting:serverChecks', false, data)
+    if not serverChecks then return end
+    placeBench(source, data)
+end)

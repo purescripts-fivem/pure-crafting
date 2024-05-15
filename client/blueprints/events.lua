@@ -10,7 +10,3 @@ RegisterNetEvent('pure-crafting:useBlueprint', function(name)
     local benchId = currentZone.benchId
     TriggerServerEvent('pure-crafting:blueprintUsed', benchId, name)
 end)
-
-function sendBlueprints(blueprints)
-    SendReactMessage('blueprints', blueprints)
-end

@@ -30,9 +30,11 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  outline: 0;
+  border: 0;
   user-select: none;
   font-family: 'Bold';
 }

@@ -19,6 +19,7 @@ function Queue:useBlueprint(source, name)
         end
     end
     self.blueprints[#self.blueprints + 1] = name
+    self.bpHash[name] = true
     local affectedRows = MySQL.update.await('UPDATE crafting_benches SET blueprints = ? WHERE id = ?', {
         json.encode(self.blueprints), self.benchId
     })
@@ -28,6 +29,7 @@ function Queue:useBlueprint(source, name)
         type = 'success',
         position = Config.libText.notfiyPoistion,
     })
+    removeItem(source, name, 1)
     debugPrint('Queue:useBlueprint | ', json.encode(self.blueprints))
 end
 
@@ -35,6 +37,7 @@ function Queue:removeBlueprint(source, name)
     for i = 1, #self.blueprints do
         if self.blueprints[i] == name then
             table.remove(self.blueprints, i)
+            self.bpHash[name] = nil
             local affectedRows = MySQL.update.await('UPDATE crafting_benches SET blueprints = ? WHERE id = ?', {
                 json.encode(self.blueprints), self.benchId
             })
@@ -94,6 +97,6 @@ function createItems()
     end
 
     for i = 1, #Config.benchItems do
-        createItem(Config.benchItems[i].itemName, 'pure-crafting:placeBench', Config.benchItems[i].type)
+        createItem(Config.benchItems[i].itemName, 'pure-crafting:beforeBenches', Config.benchItems[i].type)
     end
 end

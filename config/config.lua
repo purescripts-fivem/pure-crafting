@@ -39,7 +39,7 @@ Config = {
 
         cancelControl = 120, -- control to cancel placing the bench
 
-        object = `prop_toolchest_05`, -- object to place
+        object = `gr_prop_gr_bench_04a`, -- object to place (if you change this to prop_toolchest_05 and use qb-inventory make sure to remove this from their config)
 
         minusOffset = -5.0, -- this is the rotation y, for how it is placed on the ground for the red and green lines
 
@@ -58,8 +58,12 @@ Config = {
     benchItems = {
         {itemName = 'weapon_bench', type = 'weapon'},
         {itemName = 'misc_bench', type = 'misc'},
-        {itemName = 'attachments_bench', type = 'attachments'},
+        -- {itemName = 'chicken_bench', type = 'cluckinBell'},
     },
 
     previewBlueprints = true, -- if you want to preview blueprints in the crafting menu
+
+    enableFavourites = true, -- if you want to enable the favourites system
+
+    unlimitedBlueprints = true, -- if you want blueprints to be unlimited uses
 }

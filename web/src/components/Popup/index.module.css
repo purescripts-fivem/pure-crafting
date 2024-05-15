@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 .container {
   position: absolute;
   display: flex;
@@ -10,47 +12,62 @@
 }
 
 .popup {
-  width: 25vw;
   padding: 0 1vw;
-  height: 15vh;
-  border-radius: 0.5vw;
+  height: 10.7vh;
+  width: 23vh;
+  border-radius: 0.15vw;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   flex-direction: column;
+  gap: 0.7vw;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 16px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: radial-gradient(
+    60% 60% at 50% 50%,
+    rgba(67, 67, 67, 0.9) 0%,
+    rgba(37, 37, 37, 0.9) 100%
+  );
 }
 
 .text {
-  padding-top: 0.2vh;
-  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.15), -3px 0px 7px rgba(0, 0, 0, 0.15),
-    0px 4px 7px rgba(0, 0, 0, 0.15);
-  font-size: 1.11vw;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.05), -3px 0px 7px rgba(0, 0, 0, 0.05),
+    0px 4px 7px rgba(0, 0, 0, 0.05);
+  font-size: 1.3vh;
   text-align: center;
-  margin-top: 3vh;
+  font-weight: bolder;
+  font-family: 'Inter';
+}
+
+.text2 {
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.075),
+    -3px 0px 7px rgba(0, 0, 0, 0.075), 0px 4px 7px rgba(0, 0, 0, 0.075);
+  font-size: 1.1vh;
+  text-align: center;
+  font-weight: 650;
+  font-family: 'Inter';
 }
 
 .boxes {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 2.5vh;
   gap: 0.7vw;
 }
 
 .button {
-  /* background-color: rgba(0, 255, 255, 0.473); */
-  width: 9.5vh;
-  height: 3.9vh;
+  width: 9.2vh;
+  height: 2.7vh;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 16px;
-  font-size: 1vw;
-  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.1), -3px 0px 7px rgba(0, 0, 0, 0.1),
-    0px 4px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+  font-size: 1.15vh;
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.25), -3px 0px 7px rgba(0, 0, 0, 0.25),
+    0px 4px 7px rgba(0, 0, 0, 0.25);
+  border-radius: 0.2vw;
+  font-family: 'Inter';
+  font-weight: 600;
+  transition: 0.3s;
+  background-color: #158d13;
 }
