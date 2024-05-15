@@ -7,12 +7,14 @@ import Item from './Item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Blueprint from './Blueprint';
+import { checkFave } from '../../utils/checkFave';
 
 const Crafting = () => {
   const theme = useAppSelector((state) => state.config.theme);
   const crafting = useAppSelector((state) => state.crafting);
   const blueprints = crafting.blueprints;
   const categories = useAppSelector((state) => state.ui.categories);
+  const faves = useAppSelector((state) => state.ui.faves);
   const [craftingItems, setCraftingItems] = useState<craftingItem[]>([]);
   const [search, setSearch] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -125,7 +127,7 @@ const Crafting = () => {
                   key={index}
                   name={item.name}
                   image={item.image}
-                  isFave={item.category === 'fave'}
+                  isFave={checkFave(item.itemName, faves)}
                   id={item.id}
                   type={item.type === 'blueprint' ? 'blueprint' : 'item'}
                   selected={
@@ -150,7 +152,7 @@ const Crafting = () => {
                   key={index}
                   name={item.name}
                   image={item.image}
-                  isFave={item.category === 'fave'}
+                  isFave={checkFave(item.itemName, faves)}
                   id={item.id}
                   type={'blaze'}
                   selected={

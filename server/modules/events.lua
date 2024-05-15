@@ -69,7 +69,7 @@ RegisterNetEvent('pure-crafting:attemptCraft', function(benchId, data)
 end)
 
 RegisterNetEvent('pure-crafting:setFavourite', function(data)
-    local itemName, category = data.itemName, data.category
+    local itemName = data.itemName
     local src = source
     local user = Players[tostring(source)]
     local checkUser = true
@@ -78,13 +78,13 @@ RegisterNetEvent('pure-crafting:setFavourite', function(data)
         checkUser = checkPerson(source)
     end
     if not checkUser then
-        createUserSetFave(src, itemName, category)
+        createUserSetFave(src, itemName)
         return
     end
 
     if user:checkFave(itemName) then
         user:removeFave(itemName)
     else
-        user:addFave(itemName, category)
+        user:addFave(itemName)
     end
 end)

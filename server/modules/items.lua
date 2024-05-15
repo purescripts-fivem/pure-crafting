@@ -1,7 +1,4 @@
-PlayerItems = {}
-
 function generateItems(source, benchId, type)
-    local user = Players[tostring(source)]
     local items = {}
     local itemsToSearch = Config.items[type]
     if not itemsToSearch then return items end
@@ -18,15 +15,13 @@ function generateItems(source, benchId, type)
                 myAmount = myItem.amount
             end
             requiredItem.myAmount = myAmount
-            if user then
-                local isFave = user:checkFave(item.itemName)
-                item.category = isFave and 'fave' or item.category
-            end
         end
         items[i] = item
     end
     local bench = ActiveBenches[tostring(benchId)]
-    if not bench then return items end
+    if not bench then
+        return items 
+    end
     local blueprints = bench.blueprints
     for i = 1, #blueprints do
         local blueprint = blueprints[i]
@@ -47,6 +42,5 @@ function generateItems(source, benchId, type)
         items[#items + 1] = blueprintTable
         ::continue::
     end
-    PlayerItems[tostring(source)] = items
     return items
 end

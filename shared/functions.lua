@@ -67,7 +67,6 @@ function initCraftables()
     end
   end
 
-  -- if not Config.blueprints.ids then return end
   for k, v in pairs(Config.blueprints.ids) do
     Blueprints[tostring(k)] = {}
     for i = 1, #v do

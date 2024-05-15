@@ -33,3 +33,7 @@ RegisterNetEvent('pure-crafting:generateItems', function(benId)
         SendReactMessage('itemsChange', items)
     end
 end)
+
+RegisterNetEvent('pure-crafting:setFaves', function(faves)
+    SendReactMessage('setFaves', faves)
+end)

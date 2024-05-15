@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS `crafting_benches` (
 
 CREATE TABLE IF NOT EXISTS `crafting_users` (
   `uniqueId` varchar(255) NOT NULL,
-  `faves` longtext NOT NULL DEFAULT '[]',
+  `faves` longtext NOT NULL DEFAULT '{}',
   `amountPlaced` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;

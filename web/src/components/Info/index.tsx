@@ -140,7 +140,6 @@ const Info = () => {
               }
               sendNui('setFavourite', {
                 itemName: item.itemName,
-                category: item.category,
               });
             }}
             style={{

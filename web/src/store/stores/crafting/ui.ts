@@ -15,6 +15,7 @@ const initialState = {
       category: 'guns',
     },
   ],
+  faves: [],
 };
 
 export const uiSlice = createSlice({
@@ -24,8 +25,11 @@ export const uiSlice = createSlice({
     setCategories: (state, action: PayloadAction<any>) => {
       state.categories = action.payload;
     },
+    setFaves: (state, action: PayloadAction<any>) => {
+      state.faves = action.payload;
+    },
   },
 });
 
 export default uiSlice.reducer;
-export const { setCategories } = uiSlice.actions;
+export const { setCategories, setFaves } = uiSlice.actions;

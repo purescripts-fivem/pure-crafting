@@ -65,7 +65,6 @@ function initUser(source)
 end
 
 function removeUser(source)
-    PlayerItems[tostring(source)] = nil
     Players[tostring(source)] = nil
 end
 

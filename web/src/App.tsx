@@ -15,7 +15,7 @@ import {
   updateSecondsChange,
 } from './store/stores/crafting/queue';
 import { setBlueprints, setItems } from './store/stores/crafting/crafting';
-import { setCategories } from './store/stores/crafting/ui';
+import { setCategories, setFaves } from './store/stores/crafting/ui';
 import updateRipples from './utils/updateRipples';
 const Popup = lazy(() => import('./components/Popup'));
 
@@ -285,17 +285,19 @@ const App = () => {
     dispatch(setBlueprints(data));
   });
 
+  useNuiEvent('setFaves', (data) => {
+    if (data === '[]') {
+      dispatch(setFaves([]));
+      return;
+    }
+    dispatch(setFaves(data));
+  });
+
   if (!loaded) return null;
   if (!configLoaded) return null;
 
   return (
     <>
-      {/* <div
-        style={{
-          backgroundImage: `url(https://cdn.discordapp.com/attachments/1136047160937422928/1239628662228123678/image.png?ex=66439da8&is=66424c28&hm=b48da3b0773219b31f13df0e1434aa005e256b1b8701ee968198e8925bb31225&)`,
-          zIndex: -1,
-        }}
-        className={style.container}></div> */}
       <Suspense fallback={<div>Loading...</div>}>
         {popup.showPopup && <Popup />}
       </Suspense>
