@@ -13,7 +13,14 @@ function checkItem(source, item, amount)
 end
 
 function getItems(source, item)
-    return player.getInventoryItem(item).count
+    local player = ESX.GetPlayerFromId(source)
+    local amt = {
+        amount = 0,
+    }
+    if not player.getInventoryItem(item) then return amt end
+    local plyerAmt = player.getInventoryItem(item).count
+    amt.amount = plyerAmt
+    return amt
 end
 
 function giveItem(source, item, amount)
