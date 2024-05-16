@@ -1,5 +1,7 @@
 # crafting-source
 
+Discord: https://discord.gg/fWKYUcgjgB
+
 Read the docs @ docs.purescripts.net
 
 Simple installation:
