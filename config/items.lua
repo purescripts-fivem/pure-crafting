@@ -1,9 +1,3 @@
-imgDirectory = 'https://cfx-nui-qb-inventory/html/images/'
-
-if Config.inventory == 'ox_inventory' then
-    imgDirectory = 'nui://ox_inventory/web/images/'
-end
-
 Config.items = {
     weapon = {
         {
