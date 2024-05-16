@@ -12,9 +12,10 @@ function pickupBench(source, id)
     local result = lib.callback.await('pure-crafting:pickupBench', false, id)
 end
 
-function createBench(location, rotation)
-    RequestModel(Config.placingBench.object)
-    local object = CreateObject(Config.placingBench.object, location.x, location.y, location.z, false, false, false)
+function createBench(location, rotation, type)
+    local model = generateObjFromType(type)
+    RequestModel(model)
+    local object = CreateObject(model, location.x, location.y, location.z, false, false, false)
     SetEntityRotation(object, rotation.x, rotation.y, rotation.z, 1)
     PlaceObjectOnGroundProperly(object)
     Wait(1000)

@@ -18,6 +18,7 @@ function getBenches()
             queue = row.queue,
             finished = row.finished,
             userPlaced = row.userPlaced,
+            type = row.type,
             obj = nil
         }
         initQueue(row.id, row.queue, row.finished, row.blueprints, row.type, row.userPlaced)
@@ -41,6 +42,7 @@ function insertBench(location, rotation, source, type)
         queue = json.encode({}),
         finished = json.encode({}),
         userPlaced = uniqueId,
+        type = type,
         obj = nil
     }
     Benches[#Benches + 1] = newBench

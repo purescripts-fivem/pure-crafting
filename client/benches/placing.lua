@@ -1,8 +1,9 @@
 local function placingBench(type)
-    RequestModel(Config.placingBench.object)
+    local model = generateObjFromType(type)
+    RequestModel(model)
     local _, _, endCoords, surfaceNormal = raycast()
     local rot = normalToRotation(surfaceNormal)
-    local object = CreateObject(Config.placingBench.object, endCoords.x, endCoords.y, endCoords.z, false, false, false)
+    local object = CreateObject(model, endCoords.x, endCoords.y, endCoords.z, false, false, false)
     local canPlace = false
 
     SetEntityAlpha(object, 200)

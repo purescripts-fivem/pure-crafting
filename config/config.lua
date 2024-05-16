@@ -39,8 +39,6 @@ Config = {
 
         cancelControl = 120, -- control to cancel placing the bench
 
-        object = `gr_prop_gr_bench_04a`, -- object to place (if you change this to prop_toolchest_05 and use qb-inventory make sure to remove this from their config)
-
         minusOffset = -5.0, -- this is the rotation y, for how it is placed on the ground for the red and green lines
 
         plusOffset = 5.0, -- this is the rotation y, for how it is placed on the ground for the red and green lines
@@ -56,8 +54,8 @@ Config = {
 
     -- these are the items in which allow you to place your bench down
     benchItems = {
-        {itemName = 'weap_bench', type = 'weapon'},
-        {itemName = 'misc_bench', type = 'misc'},
+        {itemName = 'weap_bench', type = 'weapon', object = `gr_prop_gr_bench_04a`},
+        {itemName = 'misc_bench', type = 'misc', object = `gr_prop_gr_bench_04a`},
         -- {itemName = 'chicken_bench', type = 'cluckinBell'},
     },
 

@@ -52,7 +52,7 @@ function setupBenches(source)
 
         setupBenchZone(location, rotation, vector3(3, 3, 4))
 
-        local benchObj = createBench(location, rotation)
+        local benchObj = createBench(location, rotation, bench.type)
         bench.obj = benchObj
     end
 end
@@ -100,7 +100,7 @@ function insertBench(source, newBench)
 
     setupBenchZone(location, rotation, vector3(3, 3, 4))
 
-    local benchObj = createBench(location, rotation)
+    local benchObj = createBench(location, rotation, newBench.type)
     newBench.obj = benchObj
     Benches[#Benches + 1] = newBench
 end
@@ -110,3 +110,14 @@ RegisterNetEvent('pure-crafting:beforeBenches', function(data)
     if not serverChecks then return end
     placeBench(source, data)
 end)
+
+function generateObjFromType(type)
+    for i = 1, #Config.benchItems do 
+        local benchItem = Config.benchItems[i].type
+        print(benchItem, type)
+        if benchItem == type then
+            return Config.benchItems[i].object
+        end
+    end
+    return `prop_tool_bench`
+end
