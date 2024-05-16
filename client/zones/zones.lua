@@ -25,6 +25,7 @@ function removeZones()
     for i = 1, #zones.benches do 
         zones.benches[i]:remove()
     end
+    zones.benches = {}
 end
 
 function setupBenchZone(location, rotation, boxSize)

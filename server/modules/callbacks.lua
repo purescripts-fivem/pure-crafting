@@ -29,3 +29,7 @@ end)
 lib.callback.register('pure-crafting:serverChecks', function(source)
     return serverChecks(source)
 end)
+
+lib.callback.register('pure-crafting:pickupBench', function(source, benchId)
+    return pickupBench(source, benchId)
+end)

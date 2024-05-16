@@ -9,3 +9,8 @@ end)
 RegisterNetEvent('', function()
     TriggerServerEvent('pure-crafting:playerUnloaded')
 end)
+
+function getPlayerUniqueId()
+    local citizenid = ''
+    return citizenid
+end

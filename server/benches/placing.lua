@@ -46,10 +46,39 @@ function serverChecks(source)
     return true
 end
 
--- RegisterNetEvent('pure-crafting:beforeBenches', function(type)
-    -- local customChecks = customChecks(source)
-    -- local checks = limitChecker(source)
-    -- Wait(150)
-    -- if not checks then return end
---     TriggerClientEvent('pure-crafting:placebench', source, type)
--- end)
+function pickupBench(source, benchId)
+    local bench = ActiveBenches[tostring(benchId)]
+    if not bench then return end
+    local uniqueId = getPlayerUniqueId(source)
+    if uniqueId ~= bench.userPlaced then return end
+    local type = bench.type
+
+    for i = 1, #Benches do
+        if Benches[i].id == benchId then
+            Benches[i] = nil
+            break
+        end
+    end
+
+
+    for i = 1, #Config.benchItems do 
+        local benchItem = Config.benchItems[i].type
+        if benchItem == type then
+            local item = Config.benchItems[i].itemName
+            giveItem(source, item, 1)
+            break
+        end
+    end
+
+    local user = Players[tostring(source)]
+    if user then
+        user.amountPlaced = user.amountPlaced - 1
+        MySQL.update.await('UPDATE crafting_users SET amountPlaced = ? WHERE uniqueId = ?', {
+            user.amountPlaced, user.uniqueId
+        })
+    end
+
+    MySQL.query.await('DELETE FROM crafting_benches WHERE id = ?', {benchId})
+    ActiveBenches[tostring(benchId)] = nil
+    TriggerClientEvent('pure-crafting:refreshBenches', -1, Benches)
+end

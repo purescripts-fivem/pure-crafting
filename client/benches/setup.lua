@@ -3,12 +3,16 @@ Benches = {}
 RegisterNetEvent('pure-crafting:refreshBenches', function(benches)
     local src = source
     removeZones()
+    for i = 1, #Benches do
+        removeZone('bench_'.. Benches[i].id)
+    end
     deleteAllBenches()
     Benches = benches
     setupBenches(src)
 end)
 
 function setupBenches(source)
+    local uniqueId = getPlayerUniqueId(source)
     for i = 1, #Benches do 
         local bench = Benches[i]
         local location, rotation = json.decode(bench.location), json.decode(bench.rotation)
@@ -23,6 +27,17 @@ function setupBenches(source)
                     label = 'Use Bench',
                     canInteract = function()
                         return true
+                    end
+                },
+                {
+                    type = 'client',
+                    action = function()
+                        pickupBench(source, bench.id)
+                    end,
+                    icon = 'fas fa-hand',
+                    label = 'Pickup Bench',
+                    canInteract = function()
+                        return uniqueId == bench.userPlaced
                     end
                 }
             },
@@ -43,10 +58,11 @@ function setupBenches(source)
 end
 
 RegisterNetEvent('pure-crafting:insertBench', function(newBench)
-    insertBench(newBench)
+    insertBench(source, newBench)
 end)
 
-function insertBench(newBench)
+function insertBench(source, newBench)
+    local uniqueId = getPlayerUniqueId(source)
     local location, rotation = newBench.location, newBench.rotation
     local tableForTarget = {
         options = {
@@ -59,6 +75,17 @@ function insertBench(newBench)
                 label = 'Use Bench',
                 canInteract = function()
                     return true
+                end
+            },
+            {
+                type = 'client',
+                action = function()
+                    pickupBench(source, newBench.id)
+                end,
+                icon = 'fas fa-hand',
+                label = 'Pickup Bench',
+                canInteract = function()
+                    return uniqueId == newBench.userPlaced
                 end
             }
         },

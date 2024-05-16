@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `crafting_benches` (
   `finished` longtext NOT NULL DEFAULT '[]',
   `blueprints` longtext NOT NULL DEFAULT '[]',
   `type` varchar(255) DEFAULT NULL,
+  `userPlaced` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 

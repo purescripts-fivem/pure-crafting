@@ -4,7 +4,7 @@ User = {}
 Players = {}
 
 
-function Queue:new(benchId, queue, finished, blueprints, type)
+function Queue:new(benchId, queue, finished, blueprints, type, userPlaced)
     local decodeBps = json.decode(blueprints)
     local bpHash = {}
 
@@ -21,6 +21,7 @@ function Queue:new(benchId, queue, finished, blueprints, type)
         finished = json.decode(finished),
         blueprints = decodeBps,
         bpHash = bpHash,
+        userPlaced = userPlaced,
         type = type
     }
 
@@ -28,8 +29,8 @@ function Queue:new(benchId, queue, finished, blueprints, type)
     return setmetatable(data, {__index = Queue})
 end
 
-function initQueue(benchId, queue, finished, blueprints, type)
-    local bench = Queue:new(benchId, queue, finished, blueprints, type)
+function initQueue(benchId, queue, finished, blueprints, type, userPlaced)
+    local bench = Queue:new(benchId, queue, finished, blueprints, type, userPlaced)
     ActiveBenches[tostring(benchId)] = bench
 end
 

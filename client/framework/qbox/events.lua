@@ -7,3 +7,8 @@ end)
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     TriggerServerEvent('pure-crafting:playerUnloaded')
 end)
+
+function getPlayerUniqueId()
+    local citizenid = QBX.PlayerData.citizenid
+    return citizenid
+end

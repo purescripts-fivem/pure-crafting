@@ -8,16 +8,8 @@ function deleteAllBenches()
     end
 end
 
-function deleteBench(id)
-    for i = 1, #Benches do 
-        if Benches[i].id == id then 
-            local benchObj = Benches[i].obj
-            if not benchObj or not DoesEntityExist(benchObj) then return end
-            DeleteEntity(benchObj)
-            Benches[i].obj = nil
-            break
-        end
-    end
+function pickupBench(source, id)
+    local result = lib.callback.await('pure-crafting:pickupBench', false, id)
 end
 
 function createBench(location, rotation)

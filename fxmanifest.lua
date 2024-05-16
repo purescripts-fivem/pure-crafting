@@ -12,6 +12,7 @@ ui_page 'web/build/index.html'
 
 client_scripts {
   'client/**/*',
+  -- '@qbx_core/modules/playerdata.lua', -- UNCOMMENT THESE IF YOU USE QBOX
 }
 
 server_scripts {
