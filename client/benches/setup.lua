@@ -114,7 +114,6 @@ end)
 function generateObjFromType(type)
     for i = 1, #Config.benchItems do 
         local benchItem = Config.benchItems[i].type
-        print(benchItem, type)
         if benchItem == type then
             return Config.benchItems[i].object
         end

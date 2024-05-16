@@ -59,6 +59,10 @@ Config = {
         -- {itemName = 'chicken_bench', type = 'cluckinBell'},
     },
 
+    prePlacedBenches = {
+        {location = vector3(-986, -434, 36), rotation = vector3(0, 0, 0), type = 'weapon'}, -- {location = vector3(x, y, z), rotation = vector3(x, y, z), type = 'weapon'}
+    },
+
     previewBlueprints = true, -- if you want to preview blueprints in the crafting menu
 
     enableFavourites = true, -- if you want to enable the favourites system

@@ -24,10 +24,30 @@ function getBenches()
         initQueue(row.id, row.queue, row.finished, row.blueprints, row.type, row.userPlaced)
     end
 
+    if not Config.prePlacedBenches then goto continue end
+    for i = 1, #Config.prePlacedBenches do
+        local bench = Config.prePlacedBenches[i]
+        local benchId = 9999999 + i
+        newTable[#newTable + 1] = {
+            id = benchId,
+            location = json.encode(bench.location),
+            rotation = json.encode(bench.rotation),
+            queue = json.encode({}),
+            finished = json.encode({}),
+            userPlaced = 'preplaced',
+            type = bench.type,
+            obj = nil
+        }
+        initQueue(benchId, json.encode({}), json.encode({}), json.encode({}), bench.type, 'preplaced')
+    end
+
+    ::continue::
+
     Benches = newTable
 
     debugPrint('getBenches | Benches:', json.encode(Benches))
 end
+
 
 function insertBench(location, rotation, source, type)
     local uniqueId = getPlayerUniqueId(source)
