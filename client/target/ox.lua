@@ -15,7 +15,7 @@ end
 
 function addTargetToCoords(coords, boxSize, table, name)
     local rotation = table.rotation or 0.0
-    createdZones[name] = exports['ox_target']:addZone({
+    createdZones[name] = exports['ox_target']:addBoxZone({
         coords = coords,
         size = boxSize,
         rotation = rotation,
