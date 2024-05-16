@@ -20,7 +20,7 @@ function getItems(source, item)
 end
 
 function giveItem(source, item, amount)
-    local canCarry = exports.ox_inventory:CanCarryItem(source, 'count', item)
+    local canCarry = exports.ox_inventory:CanCarryItem(source, item, amount)
     if not canCarry then return end
     local success, response = exports.ox_inventory:AddItem(source, item, amount)
     return success
