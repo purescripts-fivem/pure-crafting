@@ -33,7 +33,7 @@ end
 
 function createUserSetFave(source, itemName)
     local uniqueId = getPlayerUniqueId(source)
-    local id = MySQL.insert.await('INSERT INTO `crafting_users` (uniqueId) VALUES (?)', {
+    MySQL.insert.await('INSERT INTO `crafting_users` (uniqueId) VALUES (?)', {
         uniqueId
     })
     local user = User:new(source)
