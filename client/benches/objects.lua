@@ -14,12 +14,18 @@ end
 
 function createBench(location, rotation, type)
     local model = generateObjFromType(type)
-    RequestModel(model)
+    lib.requestModel(model)
+    -- RequestModel(model)
+    -- while not HasModelLoaded(model) do
+    --     print('waiting for model to load')
+    --     Wait(0)
+    -- end
+    Wait(350)
     local object = CreateObject(model, location.x, location.y, location.z, false, false, false)
     SetEntityRotation(object, rotation.x, rotation.y, rotation.z, 1)
     PlaceObjectOnGroundProperly(object)
-    Wait(1000)
-    FreezeEntityPosition(object, true)
+    -- FreezeEntityPosition(object, true)
+    SetModelAsNoLongerNeeded(model)
     SetEntityCanBeDamaged(object, false)
     return object
 end
