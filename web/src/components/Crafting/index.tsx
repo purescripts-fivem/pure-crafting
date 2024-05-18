@@ -41,6 +41,10 @@ const Crafting = () => {
     }
 
     crafting.items.map((item: craftingItem) => {
+      if (category === 'fave' && !checkFave(item.itemName, faves)) {
+        return;
+      }
+
       if (item.category === category) {
         array.push(item);
       }

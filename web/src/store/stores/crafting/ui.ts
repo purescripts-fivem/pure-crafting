@@ -15,7 +15,9 @@ const initialState = {
       category: 'guns',
     },
   ],
-  faves: [],
+  faves: {
+    assualtrifle: true,
+  },
 };
 
 export const uiSlice = createSlice({
