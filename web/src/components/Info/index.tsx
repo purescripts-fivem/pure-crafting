@@ -234,6 +234,13 @@ const Info = () => {
         </div>
       </div>
       <div className={style.middle}>
+        <h1
+          className={style.text}
+          style={{
+            color: theme.white,
+          }}>
+          {language.required}
+        </h1>
         <Required type='ignore' />
       </div>
       <div className={style.spacer}></div>

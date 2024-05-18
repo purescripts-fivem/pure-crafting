@@ -46,13 +46,6 @@ const Required = (props: Props) => {
         background: theme.button,
         border: `0.2vw solid ${theme.border}`,
       }}>
-      <h1
-        className={style.text}
-        style={{
-          color: theme.white,
-        }}>
-        {language.required}
-      </h1>
       <div className={style.housing} ref={scrollRef} onWheel={handleWheel}>
         {item &&
           item.requiredItems.length > 0 &&
