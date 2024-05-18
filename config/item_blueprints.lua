@@ -16,7 +16,7 @@ Config.blueprints = {
                 id = 99991,
                 itemName = 'weapon_microsmg',
                 name = 'Micro SMG',
-                image = `${ImageDirectory}weapon_microsmg.png`,
+                image = ImageDirectory..'weapon_microsmg.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Micro SMG',
@@ -27,7 +27,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -36,7 +36,7 @@ Config.blueprints = {
                 id = 99992,
                 itemName = 'weapon_machinepistol',
                 name = 'Machine Pistol',
-                image = `${ImageDirectory}weapon_machinepistol.png`,
+                image = ImageDirectory..'weapon_machinepistol.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Machine Pistol',
@@ -47,7 +47,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -56,7 +56,7 @@ Config.blueprints = {
                 id = 99993,
                 itemName = 'weapon_sawnoffshotgun',
                 name = 'Sawn Off Shotgun',
-                image = `${ImageDirectory}weapon_sawnoffshotgun.png`,
+                image = ImageDirectory..'weapon_sawnoffshotgun.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Shawn Off Shotgun',
@@ -67,7 +67,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -76,7 +76,7 @@ Config.blueprints = {
                 id = 99994,
                 itemName = 'weapon_advancedrifle',
                 name = 'Advanced Rifle',
-                image = `${ImageDirectory}weapon_advancedrifle.png`,
+                image = ImageDirectory..'weapon_advancedrifle.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Advanced Rifle',
@@ -87,7 +87,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -96,7 +96,7 @@ Config.blueprints = {
                 id = 99995,
                 itemName = 'weapon_assaultrifle',
                 name = 'Assault Rifle',
-                image = `${ImageDirectory}weapon_assaultrifle.png`,
+                image = ImageDirectory..'weapon_assaultrifle.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Assault Rifle',
@@ -107,7 +107,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -116,7 +116,7 @@ Config.blueprints = {
                 id = 99996,
                 itemName = 'weapon_specialcarbine',
                 name = 'Special Carbine',
-                image = `${ImageDirectory}weapon_specialcarbine.png`,
+                image = ImageDirectory..'weapon_specialcarbine.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Special Carbine',
@@ -127,7 +127,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -138,7 +138,7 @@ Config.blueprints = {
                 id = 99991,
                 itemName = 'holoscope_attachment',
                 name = 'Weapon Holoscope',
-                image = `${ImageDirectory}holoscope_attachment.png`,
+                image = ImageDirectory..'holoscope_attachment.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Holographic Scope',
@@ -149,7 +149,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -158,7 +158,7 @@ Config.blueprints = {
                 id = 99992,
                 itemName = 'clip_attachment',
                 name = 'Extended Clip',
-                image = `${ImageDirectory}clip_attachment.png`,
+                image = ImageDirectory..'clip_attachment.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Extended Clip',
@@ -169,7 +169,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -178,7 +178,7 @@ Config.blueprints = {
                 id = 99993,
                 itemName = 'suppressor_attachment',
                 name = 'Weapon Suppressor',
-                image = `${ImageDirectory}suppressor_attachment.png`,
+                image = ImageDirectory..'suppressor_attachment.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Suppressorr',
@@ -189,7 +189,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -198,7 +198,7 @@ Config.blueprints = {
                 id = 99994,
                 itemName = 'grip_attachment',
                 name = 'Weapon Grip',
-                image = `${ImageDirectory}grip_attachment.png`,
+                image = ImageDirectory..'grip_attachment.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Weapon Grip',
@@ -209,7 +209,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
@@ -218,7 +218,7 @@ Config.blueprints = {
                 id = 99995,
                 itemName = 'weapon_molotov',
                 name = 'Molotov',
-                image = `${ImageDirectory}weapon_molotov.png`,
+                image = ImageDirectory..'weapon_molotov.png',
                 category = 'blueprints', -- DONT TOUCH THIS!!!
                 type = 'blueprint', -- DONT TOUCH THIS!!!
                 description = 'Blueprints for a Molotov',
@@ -229,7 +229,7 @@ Config.blueprints = {
                         name = 'Metal Scrap',
                         amount = 20,
                         myAmount = 0,
-                        image = `${ImageDirectory}metalscrap.png`,
+                        image = ImageDirectory..'metalscrap.png',
                     },
                 },
             },
