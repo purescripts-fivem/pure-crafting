@@ -11,6 +11,6 @@ RegisterNetEvent('esx:onPlayerLogout', function()
 end)
 
 function getPlayerUniqueId(source)
-local PlayerData = ESX.GetPlayerData()
-return PlayerData.identifier
+    local PlayerData = ESX.GetPlayerData()
+    return PlayerData.identifier
 end
