@@ -100,3 +100,10 @@ function createItems()
         createItem(Config.benchItems[i].itemName, 'pure-crafting:beforeBenches', Config.benchItems[i].type)
     end
 end
+
+function getRandomBlueprint()
+    local random = math.random(1, #Config.blueprints.items)
+    return Config.blueprints.items[random]
+end
+
+exports('getRandomBlueprint', getRandomBlueprint)
