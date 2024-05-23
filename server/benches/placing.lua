@@ -70,6 +70,17 @@ function pickupBench(source, benchId)
         end
     end
 
+    local row = MySQL.single.await('SELECT `blueprints` FROM `crafting_benches` WHERE `id` = ? LIMIT 1', {
+        benchId
+    })
+
+    if row then
+        local blueprints = json.decode(row.blueprints)
+        for k = 1, #blueprints do local v = blueprints[k]
+            giveItem(source, v, 1)
+        end
+    end
+
     local user = Players[tostring(source)]
     if user then
         user.amountPlaced = user.amountPlaced - 1
