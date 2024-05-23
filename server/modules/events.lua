@@ -77,8 +77,14 @@ RegisterNetEvent('pure-crafting:setFavourite', function(data)
     if not user then
         checkUser = checkPerson(source)
     end
+
     if not checkUser then
         createUserSetFave(src, itemName)
+        return
+    end
+
+    if not user then
+        print('no user???')
         return
     end
 
